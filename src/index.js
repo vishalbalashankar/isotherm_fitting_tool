@@ -5,29 +5,61 @@ import './index.css';
 class NameForm extends React.Component {
   constructor(props){
     super(props);
-    this.state= {value: ''};
-    this.handleChange = this.handleChange.bind(this);
+    this.state= {
+      adsname: 'zeolite',
+      density: 1300,
+      porosity: 0.34,
+    };
+    this.handleChangeAdsName = this.handleChangeAdsName.bind(this);
+    this.handleChangeDensity = this.handleChangeDensity.bind(this);
+    this.handleChangePorosity = this.handleChangePorosity.bind(this);
     this.handleSubmit = this.handleSubmit.bind(this); 
   }
 
-  handleChange(event) {
-    this.setState({value: event.target.value})
+  handleChangeAdsName(event) {
+    this.setState({adsname: event.target.value})
+  }
+
+  handleChangeDensity(event) {
+    this.setState({density: event.target.value})
+  }
+
+  handleChangePorosity(event) {
+    this.setState({porosity: event.target.value})
   }
 
   handleSubmit(event) {
-    alert('A name was submitted: ' + this.state.value);
+    alert('A name was submitted: ' + this.state.adsname);
     event.preventDefault();
   }
 
   render() {
     return (
       <form onSubmit={this.handleSubmit}>
-        <label>
-          Name:
-          <input type="text" value= {this.state.value} 
-          onChange = {this.handleChange} />
-        </label>
-        <input type ="submit" value="Submit" />
+        <ul>
+          <label>
+          Adsorbent Name:
+          <input type="text" value= {this.state.adsname} 
+          onChange = {this.handleChangeAdsName} />
+          </label>
+        </ul>
+        <ul>
+          <label>
+            Density:
+            <input type="number" value= {this.state.density} 
+            onChange = {this.handleChangeDensity} />
+          </label> 
+        </ul>
+        <ul>
+          <label>
+            Porosity:
+            <input type="number" value= {this.state.porosity} 
+            onChange = {this.handleChangePorosity} />
+          </label> 
+        </ul>
+        <ul>
+          <input type ="submit" value="Submit" />
+        </ul>
       </form>
     )
   }
