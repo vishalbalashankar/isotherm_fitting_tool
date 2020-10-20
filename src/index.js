@@ -59,14 +59,14 @@ class NameForm extends React.Component {
         <ul>
           <label>
             Density [kg/m3]:
-            <input type="number" value= {this.state.density} 
+            <input type="number" value= {this.state.density} min='100' max='3000'
             onChange = {this.handleChangeDensity} />
           </label> 
         </ul>
         <ul>
           <label>
             Porosity [-]:
-            <input type="number" value= {this.state.porosity} 
+            <input type="number" value= {this.state.porosity} min='0.1' max='0.9'
             onChange = {this.handleChangePorosity} />
           </label> 
         </ul>
