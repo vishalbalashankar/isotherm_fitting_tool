@@ -12,32 +12,12 @@ class NameForm extends React.Component {
       adsb1: 'CO2',
       adsb2: 'N2',
     };
-    this.handleChangeAdsName = this.handleChangeAdsName.bind(this);
-    this.handleChangeDensity = this.handleChangeDensity.bind(this);
-    this.handleChangePorosity = this.handleChangePorosity.bind(this);
-    this.handleChangeAdsb1 = this.handleChangeAdsb1.bind(this);
-    this.handleChangeAdsb2 = this.handleChangeAdsb2.bind(this);
+    this.handleChangeValue = this.handleChangeValue.bind(this);
     this.handleSubmit = this.handleSubmit.bind(this); 
   }
 
-  handleChangeAdsName(event) {
-    this.setState({adsname: event.target.value})
-  }
-
-  handleChangeDensity(event) {
-    this.setState({density: event.target.value})
-  }
-
-  handleChangePorosity(event) {
-    this.setState({porosity: event.target.value})
-  }
-
-  handleChangeAdsb1(event) {
-    this.setState({adsb1: event.target.value});
-  }
-
-  handleChangeAdsb2(event) {
-    this.setState({adsb2: event.target.value});
+  handleChangeValue(event,key) {
+    this.setState({[key]: event.target.value});
   }
 
   handleSubmit(event) {
@@ -53,27 +33,27 @@ class NameForm extends React.Component {
           <label>
           Adsorbent Name:
           <input type="text" value= {this.state.adsname} 
-          onChange = {this.handleChangeAdsName} />
+          onChange = {(event) => this.handleChangeValue(event,'adsname')} />
           </label>
         </ul>
         <ul>
           <label>
             Density [kg/m3]:
-            <input type="number" value= {this.state.density} min='100' max='3000'
-            onChange = {this.handleChangeDensity} />
+            <input type="number" value= {this.state.density} min='100' max='3000' step='100'
+            onChange = {(event) => this.handleChangeValue(event,'density')} />
           </label> 
         </ul>
         <ul>
           <label>
             Porosity [-]:
-            <input type="number" value= {this.state.porosity} min='0.1' max='0.9'
-            onChange = {this.handleChangePorosity} />
+            <input type="number" value= {this.state.porosity} min='0.1' max='0.9' step='0.01'
+            onChange = {(event) => this.handleChangeValue(event,'porosity')} />
           </label> 
         </ul>
         <ul>
           <label>
             Adsorbate - 1:
-            <select value={this.state.adsb1} onChange={this.handleChangeAdsb1}>
+            <select value={this.state.adsb1} onChange={(event) => this.handleChangeValue(event,'adsb1')}>
               <option value="co2">CO2</option>
               <option value="n2">N2</option>
               <option value="ch4">CH4</option>
@@ -84,7 +64,7 @@ class NameForm extends React.Component {
         <ul>
           <label>
             Adsorbate - 2:
-            <select value={this.state.adsb2} onChange={this.handleChangeAdsb2}>
+            <select value={this.state.adsb2} onChange={(event) => this.handleChangeValue(event,'adsb2')}>
               <option value="co2">CO2</option>
               <option value="n2">N2</option>
               <option value="ch4">CH4</option>
