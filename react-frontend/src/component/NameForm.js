@@ -1,4 +1,6 @@
 import React from 'react'
+import 'bootstrap/dist/css/bootstrap.min.css'
+import {Button} from 'react-bootstrap'
 
 class NameForm extends React.Component {
     constructor(props) {
@@ -63,7 +65,7 @@ class NameForm extends React.Component {
                         <option value="ar">Ar</option>
                     </select>
                 </div>
-                <button type='submit'>Submit</button>
+                <Button type='submit'>Submit</Button>
             </form>
         )
     }
