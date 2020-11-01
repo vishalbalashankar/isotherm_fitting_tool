@@ -5,7 +5,7 @@ import IsoTitle from './component/IsoTitle'
 
 function App() {
   return (
-    <div className="App">
+    <div className="container">
       <IsoTitle />
       <NameForm />
     </div>
