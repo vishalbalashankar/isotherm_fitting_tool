@@ -27,15 +27,25 @@ class NameForm extends React.Component {
         return(
             <Form onSubmit={this.handleSubmit}>
                 <Form.Group>
+                    <Row>
+                    <Col>
                     <Form.Label>Adsorbent Name: </Form.Label>
+                    </Col>
+                    <Col>
                     <Form.Control
                         type='text'
                         value={this.state.adsname}
                         onChange={ (event) => this.handleChangeValue(event,'adsname')} 
                     />
+                    </Col>
+                    </Row>
                 </Form.Group>
                 <Form.Group>
+                    <Row>
+                    <Col>
                     <Form.Label>Density [kg/m3]: </Form.Label>
+                    </Col>
+                    <Col>
                     <Form.Control
                         type='number'
                         value={this.state.density}
@@ -44,61 +54,71 @@ class NameForm extends React.Component {
                         max='3000'
                         step='100'
                     />
+                    </Col>
+                    </Row>
                 </Form.Group>
+                <Form.Group>
                 <Row>
                 <Col>
-                <Form.Group>
                     <Form.Label>Adsorbate 1: </Form.Label>
+                </Col>
+                <Col>
                     <Form.Control
                         as='select'
                         value={this.state.adsb1}
                         onChange={ (event) => this.handleChangeValue(event,'adsb1')}
                     >
-                        <option value="co2">CO2</option>
-                        <option value="n2">N2</option>
-                        <option value="ch4">CH4</option>
-                        <option value="H2">H2</option>
-                        <option value="ar">Ar</option>
+                        <option value="co2">Carbon dioxide</option>
+                        <option value="n2">Nitrogen</option>
+                        <option value="ch4">Methane</option>
+                        <option value="H2">Hydrigen</option>
+                        <option value="ar">Argon</option>
                     </Form.Control>
-                </Form.Group>
                 </Col>
-                <Col>
-                <Form.Group>
+                </Row>
+                <Row>
+                <Col xs={6}>
+                </Col>
+                <Col xs={6}>
                     <Form.File
                         className="position-relative"
                         required
                         name="file"
                     />
-                </Form.Group>
                 </Col>
                 </Row>
+                </Form.Group>
+                <Form.Group>
                 <Row>
                 <Col>
-                <Form.Group>
-                    <Form.Label>Adsorbate 2: </Form.Label>
+                <Form.Label>Adsorbate 2: </Form.Label>
+                </Col>
+                <Col>
                     <Form.Control
                         as='select'
                         value={this.state.adsb2}
                         onChange={ (event) => this.handleChangeValue(event,'adsb2')}
                     >
-                        <option value="co2">CO2</option>
-                        <option value="n2">N2</option>
-                        <option value="ch4">CH4</option>
-                        <option value="H2">H2</option>
-                        <option value="ar">Ar</option>
+                        <option value="co2">Carbon dioxide</option>
+                        <option value="n2">Nitrogen</option>
+                        <option value="ch4">Methane</option>
+                        <option value="H2">Hydrogen</option>
+                        <option value="ar">Argon</option>
                     </Form.Control>
-                </Form.Group>
                 </Col>
-                <Col>
-                <Form.Group>
+                </Row>
+                <Row>
+                <Col xs={6}>
+                </Col>
+                <Col xs={6}>
                     <Form.File
                         className="position-relative"
                         required
                         name="file"
                     />
-                </Form.Group>
                 </Col>
                 </Row>
+                </Form.Group>
                 <Form.Group>
                 <Button type='submit'>Submit</Button>
                 </Form.Group>
