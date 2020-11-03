@@ -2,16 +2,19 @@ import React from 'react'
 import 'bootstrap/dist/css/bootstrap.min.css'
 import {Form, Row, Col, Button} from 'react-bootstrap'
 import './myStyles.css'
+
+const initialState = {
+    adsname: 'Zeolite-13X',
+    density: '1100',
+    adsb1: 'co2',
+    adsb2: 'n2',
+    adsnameError: "",
+}
+
 class NameForm extends React.Component {
     constructor(props) {
         super(props)
-
-        this.state = {
-            adsname: 'Zeolite-13X',
-            density: '1100',
-            adsb1: 'co2',
-            adsb2: 'n2'
-        }
+        this.state = initialState;
         this.handleSubmit = this.handleSubmit.bind(this);
     }
 
@@ -19,9 +22,29 @@ class NameForm extends React.Component {
         this.setState({[key]: event.target.value})
     }
 
+    validate = () => {
+        let adsnameError ="";
+
+        if (!this.state.adsname) {
+            adsnameError = "adsorbent name cannot be empty"
+        }
+
+        if (adsnameError) {
+            this.setState({ adsnameError });
+            return false;
+        }
+
+        return true;
+    }
+
     handleSubmit(event) {
-        alert('A name was submitted: ' + this.state.adsname);
         event.preventDefault();
+        const isValid = this.validate();
+        if (isValid) {
+            console.log(this.state);
+            alert('A name was submitted: ' + this.state.adsname);
+            this.setState(initialState); 
+        }
     }
     render() {
         return(
@@ -37,6 +60,9 @@ class NameForm extends React.Component {
                         value={this.state.adsname}
                         onChange={ (event) => this.handleChangeValue(event,'adsname')} 
                     />
+                    <div style={ {fontSize:12, color: "red"}}>
+                        {this.state.adsnameError}
+                    </div>
                     </Col>
                     </Row>
                 </Form.Group>
