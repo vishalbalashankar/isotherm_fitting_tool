@@ -7,9 +7,16 @@ import PlotIsotherms from './component/PlotIsotherms'
 function App() {
   return (
     <div className="container">
-      <IsoTitle />
-      <NameForm />
-      <PlotIsotherms />
+      <div class="item1">
+        <IsoTitle />
+      </div>
+      <div class="item2">
+      </div>
+      <div class="item3">
+        <NameForm />
+      </div>
+      <div class="item4"></div>
+      <div class="item5"><PlotIsotherms /></div>
     </div>
   );
 }

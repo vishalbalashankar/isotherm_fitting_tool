@@ -1,4 +1,9 @@
 .container{
+  display: grid;
+  grid-gap: 3px;
+  grid-template-columns: repeat(2, 1fr);
+  grid-template-rows: 40px 200 px 40px;
+
   background-image: url(./component/Coverpic.png);
   /* Full height */
     height: 100%; 
@@ -9,3 +14,6 @@
     background-size: cover;
   
 }
+
+
+
