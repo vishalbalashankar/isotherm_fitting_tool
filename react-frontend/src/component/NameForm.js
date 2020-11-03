@@ -52,7 +52,6 @@ class NameForm extends React.Component {
                         onChange={ (event) => this.handleChangeValue(event,'density')} 
                         min='100'
                         max='3000'
-                        step='100'
                     />
                     </Col>
                     </Row>
@@ -71,7 +70,7 @@ class NameForm extends React.Component {
                         <option value="co2">Carbon dioxide</option>
                         <option value="n2">Nitrogen</option>
                         <option value="ch4">Methane</option>
-                        <option value="H2">Hydrigen</option>
+                        <option value="H2">Hydrogen</option>
                         <option value="ar">Argon</option>
                     </Form.Control>
                 </Col>
