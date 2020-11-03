@@ -4,11 +4,12 @@ import {Form, Row, Col, Button} from 'react-bootstrap'
 import './myStyles.css'
 
 const initialState = {
-    adsname: 'Zeolite-13X',
-    density: '1100',
+    adsname: '',
+    density: '',
     adsb1: 'co2',
     adsb2: 'n2',
     adsnameError: "",
+    densityError: "",
 }
 
 class NameForm extends React.Component {
@@ -23,14 +24,18 @@ class NameForm extends React.Component {
     }
 
     validate = () => {
-        let adsnameError ="";
+        let adsnameError = "";
+        let densityError = "";
 
         if (!this.state.adsname) {
             adsnameError = "adsorbent name cannot be empty"
         }
+        if (!this.state.density) {
+            densityError = "adsorbent density cannot be empty"
+        }
 
-        if (adsnameError) {
-            this.setState({ adsnameError });
+        if (adsnameError || densityError) {
+            this.setState({ adsnameError, densityError });
             return false;
         }
 
@@ -42,8 +47,8 @@ class NameForm extends React.Component {
         const isValid = this.validate();
         if (isValid) {
             console.log(this.state);
-            alert('A name was submitted: ' + this.state.adsname);
-            this.setState(initialState); 
+            this.setState(initialState);
+            alert('A name was submitted: ' + this.state.adsname); 
         }
     }
     render() {
@@ -79,6 +84,9 @@ class NameForm extends React.Component {
                         min='100'
                         max='3000'
                     />
+                    <div style={ {fontSize:12, color: "red"}}>
+                        {this.state.densityError}
+                    </div>
                     </Col>
                     </Row>
                 </Form.Group>
