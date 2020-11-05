@@ -5,5 +5,11 @@ services:
     image: isotherm_fitting_tool/react-frontend:latest
     restart: always
     ports: 
-      - "7500:3000"
+      - "7500:7500"
     stdin_open: true
+  isotherm-api:
+    build: api
+    image: isotherm_fitting_tool/api:latest
+    restart: always
+    ports:
+      - "7501:7501"
