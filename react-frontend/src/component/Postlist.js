@@ -6,22 +6,24 @@ class Postlist extends React.Component {
         super(props)
 
         this.state = {
-            posts: []
+            posts: [],
+            errorMsg: []
         }
     }
     componentDidMount() {
-        axios.get('https://jsonplaceholder.typicode.com/posts')
+        axios.get('https://jsonplaceholder.typicode.com/posts1')
         .then(response => {
             console.log(response)
             this.setState({posts: response.data})
         })
         .catch(error => {
             console.log(error)
+            this.setState({errorMsg: "Error retreiving data"})
         })
     }
 
     render() {
-        const { posts } = this.state 
+        const { posts, errorMsg } = this.state 
 
         return (
             <div>
@@ -29,6 +31,9 @@ class Postlist extends React.Component {
                 {
                     posts.length ? 
                     posts.map(post => <div key={post.id}>{post.title}</div>) : null
+                }
+                {
+                    errorMsg ? <div> {errorMsg} </div> : null 
                 }
             </div>
         )
