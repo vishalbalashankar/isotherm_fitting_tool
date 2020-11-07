@@ -1,11 +1,11 @@
 import React from 'react';
 import './App.css';
-import PostForm from './component/PostForm'
+import IsoForm from './component/IsoForm'
 
 function App() {
   return (
     <div>
-      <PostForm />
+      <IsoForm />
     </div>
   );
 }
