@@ -11,7 +11,7 @@ const initialState = {
     adsb2: 'n2',
     adsnameError: "",
     densityError: "",
-    file_adsb1:null,
+    file_adsb1:'',
     file_adsb2:''
 }
 
@@ -61,7 +61,7 @@ class NameForm extends React.Component {
             const fd = new FormData();
             fd.append('image',this.state.file_adsb1,this.state.file_adsb1.name)
             console.log(this.state.file_adsb1.name)
-            axios.post('http://localhost:7501/upload-file',fd)
+            axios.post('http://0.0.0.0:7501/upload-file',fd)
                 .then(res => {
                     console.log(res);
                 })

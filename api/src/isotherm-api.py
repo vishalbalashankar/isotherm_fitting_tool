@@ -17,12 +17,16 @@ def upload_file():
     if request.method == "POST":
 
         if request.files:
+            print("File is uploading",flush=True)
 
-            file_1=request.files["file_1"]
+            file_1=request.files["image"]
 
-            print(file_1)
+            print("File is uploading",flush=True)
 
             return "file uploaded successfully!"
 
+
 if __name__ == "__main__":
     app.run(host='0.0.0.0', port=7501, debug=True)
+
+flask_cors.CORS(app, expose_headers='Authorization')
