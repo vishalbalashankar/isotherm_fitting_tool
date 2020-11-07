@@ -2,6 +2,7 @@ import React from 'react'
 import 'bootstrap/dist/css/bootstrap.min.css'
 import {Form, Row, Col, Button} from 'react-bootstrap'
 import './myStyles.css'
+import axios from 'axios'
 
 const initialState = {
     adsname: '',
@@ -10,7 +11,7 @@ const initialState = {
     adsb2: 'n2',
     adsnameError: "",
     densityError: "",
-    file_adsb1:'',
+    file_adsb1:null,
     file_adsb2:''
 }
 
@@ -18,11 +19,20 @@ class NameForm extends React.Component {
     constructor(props) {
         super(props)
         this.state = initialState;
+        this.handleChangeValue = this.handleChangeValue.bind(this);
+        this.handleFile =  this.handleFile.bind(this); 
         this.handleSubmit = this.handleSubmit.bind(this);
     }
 
     handleChangeValue(event,key) {
         this.setState({[key]: event.target.value})
+    }
+
+    handleFile = event => {
+        this.setState({
+            file_adsb1: event.target.files[0]
+        })
+        console.log(event.target.files[0]);
     }
 
     validate = () => {
@@ -48,11 +58,22 @@ class NameForm extends React.Component {
         event.preventDefault();
         const isValid = this.validate();
         if (isValid) {
-            console.log(this.state);
+            const fd = new FormData();
+            fd.append('image',this.state.file_adsb1,this.state.file_adsb1.name)
+            console.log(this.state.file_adsb1.name)
+            axios.post('http://localhost:7501/upload-file',fd)
+                .then(res => {
+                    console.log(res);
+                })
+                .catch(errors =>{
+                    console.log(errors)
+                })
+            // console.log(this.state); */
             this.setState(initialState);
-            alert('A name was submitted: ' + this.state.adsname); 
+            alert('A name was submitted: ' + this.state.file_adsb1.name); 
         }
     }
+
     render() {
         return(
             <Form onSubmit={this.handleSubmit}>
@@ -118,9 +139,8 @@ class NameForm extends React.Component {
                     <Form.File
                         className="position-relative"
                         required
-                        name="file"
-                        value={this.state.file_adsb1}
-                        onChange={ (event) => this.handleChangeValue(event,'file_adsb1')}
+                        name="file_1"
+                        onChange={this.handleFile}
                     />
                 </Col>
                 </Row>
