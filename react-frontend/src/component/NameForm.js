@@ -10,6 +10,8 @@ const initialState = {
     adsb2: 'n2',
     adsnameError: "",
     densityError: "",
+    file_adsb1:'',
+    file_adsb2:''
 }
 
 class NameForm extends React.Component {
@@ -117,6 +119,8 @@ class NameForm extends React.Component {
                         className="position-relative"
                         required
                         name="file"
+                        value={this.state.file_adsb1}
+                        onChange={ (event) => this.handleChangeValue(event,'file_adsb1')}
                     />
                 </Col>
                 </Row>
@@ -148,6 +152,8 @@ class NameForm extends React.Component {
                         className="position-relative"
                         required
                         name="file"
+                        value={this.state.file_adsb2}
+                        onChange={ (event) => this.handleChangeValue(event,'file_adsb2')}
                     />
                 </Col>
                 </Row>
