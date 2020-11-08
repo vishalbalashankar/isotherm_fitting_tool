@@ -6,7 +6,7 @@ from flask_cors import CORS
 
 import os 
 
-UPLOAD_FOLDER = "/app/utility"
+UPLOAD_FOLDER = "/app/userfile_uploads"
 ALLOWED_EXTENSIONS = set(["csv", "xlsx"])
 
 app = Flask(__name__)
