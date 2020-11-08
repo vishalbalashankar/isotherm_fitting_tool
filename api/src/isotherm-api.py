@@ -29,22 +29,23 @@ def upload_file():
     if request.method == 'POST':
         print("I am inside",flush = True)
     #Check if the post request has the file part
-        if 'file' not in request.files:
+        if 'files[]' not in request.files:
             print('No file part',flush=True)
             return redirect(request.url)
-        file=request.files["file"]
-        if file.filename == '':
-            print('No selected file',flush=True)
-            return redirect(request.url)
-        if file:
-            print('uploading file', flush=True)
-            filename = secure_filename(file.filename)
-            destination = "/".join([target, filename])
-            print(destination, flush = True)
-            print("Accept incoming file:", filename, flush = True)
-            file.save(destination)   
-            print('uploading file', flush=True)
-            #return redirect(url_for('uploaded_file',filename=filename))
+        files = request.files.getlist("files[]")
+        for file in files:
+            if file.filename == '':
+                print('No selected file',flush=True)
+                return redirect(request.url)
+            if file:
+                print('uploading file', flush=True)
+                filename = secure_filename(file.filename)
+                destination = "/".join([target, filename])
+                print(destination, flush = True)
+                print("Accept incoming file:", filename, flush = True)
+                file.save(destination)   
+                print('uploading file', flush=True)
+                #return redirect(url_for('uploaded_file',filename=filename))
 
     return ''
 

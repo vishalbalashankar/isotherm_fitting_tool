@@ -11,8 +11,6 @@ const initialState = {
     adsb2: 'n2',
     adsnameError: "",
     densityError: "",
-    file_adsb1:'',
-    file_adsb2:''
 }
 
 class NameForm extends React.Component {
@@ -28,9 +26,9 @@ class NameForm extends React.Component {
         this.setState({[key]: event.target.value})
     }
 
-    handleFile = event => {
+    handleFile(event,key) {
         this.setState({
-            file_adsb1: event.target.files[0]
+            [key]: event.target.files[0]
         })
         console.log(event.target.files[0]);
     }
@@ -59,8 +57,10 @@ class NameForm extends React.Component {
         const isValid = this.validate();
         if (isValid) {
             const fd = new FormData();
-            fd.append('file',this.state.file_adsb1,this.state.file_adsb1.name)
+            fd.append('files[]',this.state.file_adsb1,this.state.file_adsb1.name)
+            fd.append('files[]',this.state.file_adsb2,this.state.file_adsb2.name)
             console.log(this.state.file_adsb1)
+            console.log(this.state.file_adsb2)
             axios.post('http://0.0.0.0:7501/upload-file',fd)
                 .then(res => {
                     console.log(res);
@@ -140,9 +140,7 @@ class NameForm extends React.Component {
                         type='file'
                         name="input-file"
                         label='File'
-                        method='POST'
-                        encType='multipart/form-data'
-                        onChange={(event) => this.handleFile(event)}
+                        onChange={(event) => this.handleFile(event,'file_adsb1')}
                     />
     
                 </Col>
@@ -157,7 +155,7 @@ class NameForm extends React.Component {
                     <Form.Control
                         as='select'
                         value={this.state.adsb2}
-                        onChange={ (event) => this.handleChangeValue(event,'adsb2')}
+                        onChange={ (event) => this.handleFile(event,'adsb2')}
                     >
                         <option value="co2">Carbon dioxide</option>
                         <option value="n2">Nitrogen</option>
@@ -171,12 +169,11 @@ class NameForm extends React.Component {
                 <Col xs={6}>
                 </Col>
                 <Col xs={6}>
-                    <Form.File
-                        className="position-relative"
-                        required
-                        name="file"
-                        value={this.state.file_adsb2}
-                        onChange={ (event) => this.handleChangeValue(event,'file_adsb2')}
+                    <Form.Control
+                        type='file'
+                        name="input-file"
+                        label='File'
+                        onChange={(event) => this.handleFile(event,'file_adsb2')}
                     />
                 </Col>
                 </Row>
