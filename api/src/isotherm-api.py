@@ -5,7 +5,7 @@ from flask_cors import CORS
 from werkzeug.utils import secure_filename
 import os
 
-UPLOAD_FOLDER = "/Users/vishal/Documents/isotherm_fitting_tool/utility"
+UPLOAD_FOLDER = "/app/utility"
 ALLOWED_EXTENSIONS = set(["txt", "pdf"])
 
 app = Flask(__name__)

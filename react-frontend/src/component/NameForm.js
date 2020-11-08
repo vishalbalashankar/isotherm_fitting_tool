@@ -140,6 +140,7 @@ class NameForm extends React.Component {
                         type='file'
                         name="input-file"
                         label='File'
+                        accept=".xlsx,.csv"
                         onChange={(event) => this.handleFile(event,'file_adsb1')}
                     />
     
@@ -155,7 +156,7 @@ class NameForm extends React.Component {
                     <Form.Control
                         as='select'
                         value={this.state.adsb2}
-                        onChange={ (event) => this.handleFile(event,'adsb2')}
+                        onChange={ (event) => this.handleChangeValue(event,'adsb2')}
                     >
                         <option value="co2">Carbon dioxide</option>
                         <option value="n2">Nitrogen</option>
@@ -173,6 +174,7 @@ class NameForm extends React.Component {
                         type='file'
                         name="input-file"
                         label='File'
+                        accept=".xlsx,.csv"
                         onChange={(event) => this.handleFile(event,'file_adsb2')}
                     />
                 </Col>
