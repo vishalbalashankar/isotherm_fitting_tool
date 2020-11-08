@@ -59,8 +59,8 @@ class NameForm extends React.Component {
         const isValid = this.validate();
         if (isValid) {
             const fd = new FormData();
-            fd.append('image',this.state.file_adsb1,this.state.file_adsb1.name)
-            console.log(this.state.file_adsb1.name)
+            fd.append('file',this.state.file_adsb1,this.state.file_adsb1.name)
+            console.log(this.state.file_adsb1)
             axios.post('http://0.0.0.0:7501/upload-file',fd)
                 .then(res => {
                     console.log(res);
@@ -136,12 +136,15 @@ class NameForm extends React.Component {
                 <Col xs={6}>
                 </Col>
                 <Col xs={6}>
-                    <Form.File
-                        className="position-relative"
-                        required
-                        name="file_1"
-                        onChange={this.handleFile}
+                    <Form.Control
+                        type='file'
+                        name="input-file"
+                        label='File'
+                        method='POST'
+                        encType='multipart/form-data'
+                        onChange={(event) => this.handleFile(event)}
                     />
+    
                 </Col>
                 </Row>
                 </Form.Group>
