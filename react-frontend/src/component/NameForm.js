@@ -124,6 +124,7 @@ class NameForm extends React.Component {
                         className="position-relative"
                         required
                         name="file"
+                        accept=".xlsx,.csv"
                         onChange={ (event) => this.handleFile(event,'file_adsb1')}
                     />
                 </Col>
@@ -156,6 +157,7 @@ class NameForm extends React.Component {
                         className="position-relative"
                         required
                         name="file"
+                        accept=".xlsx,.csv"
                         onChange={ (event) => this.handleFile(event,'file_adsb2')}
                     />
                 </Col>
