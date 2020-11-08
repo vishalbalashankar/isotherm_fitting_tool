@@ -10,8 +10,6 @@ const initialState = {
     adsb2: 'n2',
     adsnameError: "",
     densityError: "",
-    file_adsb1:'',
-    file_adsb2:''
 }
 
 class NameForm extends React.Component {
@@ -23,6 +21,13 @@ class NameForm extends React.Component {
 
     handleChangeValue(event,key) {
         this.setState({[key]: event.target.value})
+    }
+
+    handleFile(event,key) {
+        this.setState({
+            [key]: event.target.files[0]
+        })
+        console.log(event.target.files[0]);
     }
 
     validate = () => {
@@ -119,8 +124,7 @@ class NameForm extends React.Component {
                         className="position-relative"
                         required
                         name="file"
-                        value={this.state.file_adsb1}
-                        onChange={ (event) => this.handleChangeValue(event,'file_adsb1')}
+                        onChange={ (event) => this.handleFile(event,'file_adsb1')}
                     />
                 </Col>
                 </Row>
@@ -152,8 +156,7 @@ class NameForm extends React.Component {
                         className="position-relative"
                         required
                         name="file"
-                        value={this.state.file_adsb2}
-                        onChange={ (event) => this.handleChangeValue(event,'file_adsb2')}
+                        onChange={ (event) => this.handleFile(event,'file_adsb2')}
                     />
                 </Col>
                 </Row>
