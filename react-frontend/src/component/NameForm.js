@@ -66,6 +66,8 @@ class NameForm extends React.Component {
                     console.log(errors)
                 })
             this.setState(initialState);
+            this.refs.file_1.value = '';
+            this.refs.file_2.value = '';
             alert('A name was submitted: ' + this.state.adsname); 
         }
     }
@@ -134,6 +136,7 @@ class NameForm extends React.Component {
                     <Form.File
                         className="position-relative"
                         required
+                        ref="file_1"
                         name="file"
                         accept=".xlsx,.csv"
                         onChange={ (event) => this.handleFile(event,'file_adsb1')}
@@ -168,6 +171,7 @@ class NameForm extends React.Component {
                         className="position-relative"
                         required
                         name="file"
+                        ref="file_2"
                         accept=".xlsx,.csv"
                         onChange={ (event) => this.handleFile(event,'file_adsb2')}
                     />
