@@ -2,6 +2,7 @@ import React from 'react'
 import 'bootstrap/dist/css/bootstrap.min.css'
 import {Form, Row, Col, Button} from 'react-bootstrap'
 import './myStyles.css'
+import axios from 'axios'
 
 const initialState = {
     adsname: '',
@@ -53,7 +54,17 @@ class NameForm extends React.Component {
         event.preventDefault();
         const isValid = this.validate();
         if (isValid) {
-            console.log(this.state);
+            const fd = new FormData();
+            fd.append('files[]',this.state.file_adsb1,this.state.file_adsb1.name)
+            fd.append('files[]',this.state.file_adsb2,this.state.file_adsb2.name)
+
+            axios.post('http://0.0.0.0:7501/upload-file',fd)
+                .then(res => {
+                    console.log(res);
+                })
+                .catch(errors =>{
+                    console.log(errors)
+                })
             this.setState(initialState);
             alert('A name was submitted: ' + this.state.adsname); 
         }
