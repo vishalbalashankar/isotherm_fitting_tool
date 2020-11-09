@@ -16,7 +16,7 @@ function App() {
         <NameForm />
       </div>
       <div class="item4"></div>
-      <div class="item5"><PlotIsotherms /></div>
+     
     </div>
   );
 }

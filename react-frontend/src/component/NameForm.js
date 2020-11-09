@@ -3,6 +3,8 @@ import 'bootstrap/dist/css/bootstrap.min.css'
 import {Form, Row, Col, Button} from 'react-bootstrap'
 import './myStyles.css'
 import axios from 'axios'
+import PlotIsotherms from './PlotIsotherms'
+
 
 const initialState = {
     adsname: '',
@@ -11,6 +13,7 @@ const initialState = {
     adsb2: 'n2',
     adsnameError: "",
     densityError: "",
+    IsSubmit: false
 }
 
 class NameForm extends React.Component {
@@ -69,10 +72,14 @@ class NameForm extends React.Component {
             this.refs.file_1.value = '';
             this.refs.file_2.value = '';
             alert('A name was submitted: ' + this.state.adsname); 
+            this.setState({
+                IsSubmit: true
+            })
         }
     }
     render() {
         return(
+            <div>
             <Form onSubmit={this.handleSubmit}>
                 <Form.Group>
                     <Row>
@@ -182,6 +189,10 @@ class NameForm extends React.Component {
                 <Button type='submit'>Submit</Button>
                 </Form.Group>
             </Form>
+    
+            <PlotIsotherms IsPlot={this.state.IsSubmit}/>
+            </div>
+
         )
     }
 }
