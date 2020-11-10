@@ -5,8 +5,9 @@ from flask_restful import Resource, Api
 import os 
 from werkzeug.utils import secure_filename
 
-app = Flask(__name__)
-api = Api(app)
+from webargs import fields
+from webargs.flaskparser import use_kwargs, parser
+from get_isotherm import get_isotherm
 
 def allowed_file(filename):
     return "." in filename and filename.rsplit(".", 1)[1].lower() in ALLOWED_EXTENSIONS
@@ -44,7 +45,23 @@ class Upload_File(Resource):
                     # return redirect(url_for('uploaded_file',filename=filename))
             return ""
 
+class Isotherms(Resource):
+    def __init__(self):
+        self.output_name = "Isotherms"
+        super()
+
+    @use_kwargs({"adsbnum": fields.Int(missing=1)},location = "query")
+    def get(self, adsbnum):
+        print("Get Request")
+        print(adsbnum,flush=True)
+        return jsonify(get_isotherm(adsbnum))
+
+
+app = Flask(__name__)
+api = Api(app)
+
 api.add_resource(Upload_File,"/upload-file")
+api.add_resource(Isotherms,"/isotherms/")
 
 
 if __name__ == "__main__":

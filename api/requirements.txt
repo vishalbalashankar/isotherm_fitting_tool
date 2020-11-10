@@ -4,3 +4,4 @@ Flask-RESTful==0.3.8
 Flask-Cors==3.0.9
 Werkzeug==1.0.1
 Pandas==1.1.4
+Webargs==6.1.1
