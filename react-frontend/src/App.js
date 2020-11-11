@@ -5,16 +5,15 @@ import IsoTitle from './component/IsoTitle'
 
 function App() {
   return (
-    <div className="container">
+    <div className="container_1">
       <div class="item1">
         <IsoTitle />
       </div>
       <div class="item2">
       </div>
-      <div class="item3">
+      <div>
         <NameForm />
       </div>
-      <div class="item4"></div>
      
     </div>
   );

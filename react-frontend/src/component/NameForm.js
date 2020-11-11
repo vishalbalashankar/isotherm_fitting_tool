@@ -1,10 +1,10 @@
 import React from 'react'
 import 'bootstrap/dist/css/bootstrap.min.css'
-import {Form, Row, Col, Button} from 'react-bootstrap'
+import {Form, Row, Col, Button, Card} from 'react-bootstrap'
 import './myStyles.css'
 import axios from 'axios'
 import PlotIsotherms from './PlotIsotherms'
-
+import Picture1 from './Picture1.png';
 
 const initialState = {
     adsname: '',
@@ -79,7 +79,21 @@ class NameForm extends React.Component {
     }
     render() {
         return(
-            <div>
+        <div className="container_form">
+            <div className="item1">
+            <Card className="cardstyles">
+                <div class="text-center">
+                <Card.Img src={Picture1}  className="cardimagestyles"/>
+                </div>
+                <Card.Body>
+                    <Card.Title>
+                        Welcome!!
+                    </Card.Title>
+                    <Card.Text>
+                        Start the adsorbent screening process by filling the form below. 
+                    </Card.Text>
+                </Card.Body>
+            </Card>
             <Form onSubmit={this.handleSubmit}>
                 <Form.Group>
                     <Row>
@@ -189,9 +203,14 @@ class NameForm extends React.Component {
                 <Button type='submit'>Submit</Button>
                 </Form.Group>
             </Form>
-    
+            </div>
+            <div className="item2">
             <PlotIsotherms IsPlot={this.state.IsSubmit}/>
             </div>
+            <div className="item4">
+            <PlotIsotherms IsPlot={this.state.IsSubmit}/>
+            </div>
+        </div>
 
         )
     }

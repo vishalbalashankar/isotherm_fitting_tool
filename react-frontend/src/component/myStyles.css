@@ -19,4 +19,29 @@
   background-color: rgb(255, 255, 255);
   color: rgb(12, 26, 224);
 }
+
+.container_form {
+  display: grid;
+  grid-gap: 20px;
+  grid-template-columns: repeat(2,1fr);
+  padding: 1em;
+  font-size: large;
+  font-weight: bold;
+}
+
+.item1 {
+  background-color: rgb(240, 251, 172);
+  grid-row: span 2;
+  border:'2px solid red',
+}
+
+.cardimagestyles {
+  background-color: rgb(240, 251, 172);
+  border: none;
+  width: 50%;
+}
   
+.cardstyles {
+  background-color: rgb(240, 251, 172);
+  border: none;
+}

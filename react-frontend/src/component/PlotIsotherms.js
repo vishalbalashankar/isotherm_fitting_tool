@@ -37,7 +37,7 @@ class PlotIsotherms extends React.Component {
                             marker: {color: 'red'},
                           },
                         ]}
-                        layout={ {width: 500, height: 400, title: 'Isotherms'} }
+                        layout={ {width: 500, height: 315, title: 'Isotherms'} }
                       />  : null
         }
       </div>
