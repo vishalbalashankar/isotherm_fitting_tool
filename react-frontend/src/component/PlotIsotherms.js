@@ -15,12 +15,10 @@ class PlotIsotherms extends React.Component {
   render() {
     axios.get('http://0.0.0.0:7501/isotherms/?adsbnum=1')
     .then(response => {
-    
       const isotherm = response.data.isotherm;
-      const xdata = isotherm. map( isotherm => isotherm.P)
       this.setState({
-        xdata: isotherm. map( isotherm => isotherm.P),
-        ydata: isotherm. map( isotherm => isotherm.q)
+        xdata: isotherm.map( isotherm => isotherm.P),
+        ydata: isotherm.map( isotherm => isotherm.q)
       })
     })
     .catch(error => {
