@@ -4,6 +4,7 @@ from flask import Flask, request, redirect, jsonify
 from flask_restful import Resource, Api
 import os 
 from werkzeug.utils import secure_filename
+from flask_cors import CORS
 
 from webargs import fields
 from webargs.flaskparser import use_kwargs, parser
@@ -54,10 +55,11 @@ class Isotherms(Resource):
     def get(self, adsbnum):
         print("Get Request")
         print(adsbnum,flush=True)
-        return jsonify(get_isotherm(adsbnum))
+        return jsonify({'isotherm': get_isotherm(adsbnum)})
 
 
 app = Flask(__name__)
+CORS(app)
 api = Api(app)
 
 api.add_resource(Upload_File,"/upload-file")
