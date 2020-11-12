@@ -27,21 +27,28 @@
   padding: 1em;
   font-size: large;
   font-weight: bold;
+  
 }
 
-.item1 {
+.item1style {
   background-color: rgb(240, 251, 172);
   grid-row: span 2;
-  border:'2px solid red',
+  width: 80%;
+  padding: 1em;
 }
 
 .cardimagestyles {
   background-color: rgb(240, 251, 172);
   border: none;
-  width: 50%;
+  width: 35%;
 }
   
 .cardstyles {
   background-color: rgb(240, 251, 172);
   border: none;
+}
+
+.smaller-input {
+  font-size: 12px;
+  padding: 2px 5px;
 }

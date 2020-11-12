@@ -11,8 +11,8 @@ class PlotIsotherms extends React.Component {
       isotherms: '',
     }
   }
-
-  render() {
+  
+  componentDidMount() {
     axios.get('http://0.0.0.0:7501/isotherms/?adsbnum=1')
     .then(response => {
       const isotherm = response.data.isotherm;
@@ -24,6 +24,9 @@ class PlotIsotherms extends React.Component {
     .catch(error => {
       console.log(error)
     })
+  }
+  render() {
+    
     return (
       <div>
         {this.props.IsPlot ?

@@ -80,7 +80,7 @@ class NameForm extends React.Component {
     render() {
         return(
         <div className="container_form">
-            <div className="item1">
+            <div className="item1style">
             <Card className="cardstyles">
                 <div class="text-center">
                 <Card.Img src={Picture1}  className="cardimagestyles"/>
@@ -95,12 +95,12 @@ class NameForm extends React.Component {
                 </Card.Body>
             </Card>
             <Form onSubmit={this.handleSubmit}>
-                <Form.Group>
+                <Form.Group >
                     <Row>
-                    <Col>
+                    <Col className='col-5'>
                     <Form.Label>Adsorbent Name: </Form.Label>
                     </Col>
-                    <Col>
+                    <Col className='col-4'>
                     <Form.Control
                         type='text'
                         value={this.state.adsname}
@@ -114,10 +114,10 @@ class NameForm extends React.Component {
                 </Form.Group>
                 <Form.Group>
                     <Row>
-                    <Col>
+                    <Col className='col-5'>
                     <Form.Label>Density [kg/m3]: </Form.Label>
                     </Col>
-                    <Col>
+                    <Col className='col-4'>
                     <Form.Control
                         type='number'
                         value={this.state.density}
@@ -133,10 +133,10 @@ class NameForm extends React.Component {
                 </Form.Group>
                 <Form.Group>
                 <Row>
-                <Col>
+                <Col className='col-5'>
                     <Form.Label>Adsorbate 1: </Form.Label>
                 </Col>
-                <Col>
+                <Col className='col-5'>
                     <Form.Control
                         as='select'
                         value={this.state.adsb1}
@@ -151,9 +151,9 @@ class NameForm extends React.Component {
                 </Col>
                 </Row>
                 <Row>
-                <Col xs={6}>
+                <Col className='col-5'>
                 </Col>
-                <Col xs={6}>
+                <Col className='col-4'>
                     <Form.File
                         className="position-relative"
                         required
@@ -167,10 +167,10 @@ class NameForm extends React.Component {
                 </Form.Group>
                 <Form.Group>
                 <Row>
-                <Col>
+                <Col className='col-5'>
                 <Form.Label>Adsorbate 2: </Form.Label>
                 </Col>
-                <Col>
+                <Col className='col-5'>
                     <Form.Control
                         as='select'
                         value={this.state.adsb2}
@@ -185,9 +185,9 @@ class NameForm extends React.Component {
                 </Col>
                 </Row>
                 <Row>
-                <Col xs={6}>
+                <Col className='col-5'>
                 </Col>
-                <Col xs={6}>
+                <Col className='col-4'>
                     <Form.File
                         className="position-relative"
                         required
@@ -208,7 +208,6 @@ class NameForm extends React.Component {
             <PlotIsotherms IsPlot={this.state.IsSubmit}/>
             </div>
             <div className="item4">
-            <PlotIsotherms IsPlot={this.state.IsSubmit}/>
             </div>
         </div>
 
