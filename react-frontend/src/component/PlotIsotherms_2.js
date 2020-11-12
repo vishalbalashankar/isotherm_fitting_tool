@@ -2,7 +2,7 @@ import React from 'react';
 import Plot from 'react-plotly.js';
 import axios from 'axios';
 
-class PlotIsotherms extends React.Component {
+class PlotIsotherms_2 extends React.Component {
   constructor(props) {
     super(props);
     this.state = {
@@ -13,7 +13,7 @@ class PlotIsotherms extends React.Component {
   }
   
   componentDidMount() {
-    axios.get('http://0.0.0.0:7501/isotherms/?adsbnum=1')
+    axios.get('http://0.0.0.0:7501/isotherms/?adsbnum=2')
     .then(response => {
       const isotherm = response.data.isotherm;
       this.setState({
@@ -48,4 +48,4 @@ class PlotIsotherms extends React.Component {
   }
 }
 
-export default PlotIsotherms
+export default PlotIsotherms_2

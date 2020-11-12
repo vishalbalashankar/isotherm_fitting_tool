@@ -16,8 +16,8 @@
   justify-content: center;
   padding: 1em;
   margin-bottom: 1em;
-  background-color: rgb(223, 199, 255);
-  color: rgb(12, 26, 224);
+  background-color: rgb(12, 26, 224);
+  color: rgb(255, 255, 255);
 }
 
 .container_form {
@@ -31,7 +31,8 @@
 }
 
 .item1style {
-  background-color: rgb(240, 251, 172);
+  border: 1px solid #1a202c;
+  border-style: dotted;
   grid-row: span 2;
   width: 80%;
   padding: 1em;
