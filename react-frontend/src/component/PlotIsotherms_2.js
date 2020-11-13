@@ -26,7 +26,8 @@ class PlotIsotherms_2 extends React.Component {
     })
   }
   render() {
-    
+
+
     return (
       <div>
         {this.props.IsPlot ?
@@ -36,11 +37,11 @@ class PlotIsotherms_2 extends React.Component {
                             x: this.state.xdata,
                             y: this.state.ydata,
                             type: 'scatter',
-                            mode: 'lines+markers',
-                            marker: {color: 'red'},
+                            mode: 'markers',
+                            marker: {color: 'blue'},
                           },
                         ]}
-                        layout={ {width: 500, height: 315, title: 'Isotherms'} }
+                        layout={ {width: 450, height: 315, title: 'Isotherms'} }
                       />  : null
         }
       </div>

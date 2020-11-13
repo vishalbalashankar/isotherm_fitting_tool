@@ -82,7 +82,7 @@ class NameForm extends React.Component {
         return(
         <div className="container_form">
             <div className="item1style">
-            <Card className="cardstyles">
+            <Card className="cardstyles" >
                 <div class="text-center">
                 <Card.Img src={Picture1}  className="cardimagestyles"/>
                 </div>
@@ -101,7 +101,7 @@ class NameForm extends React.Component {
                     <Col className='col-5'>
                     <Form.Label>Adsorbent Name: </Form.Label>
                     </Col>
-                    <Col className='col-5'>
+                    <Col className='col-6'>
                     <Form.Control
                         type='text'
                         value={this.state.adsname}
@@ -118,7 +118,7 @@ class NameForm extends React.Component {
                     <Col className='col-5'>
                     <Form.Label>Density [kg/m3]: </Form.Label>
                     </Col>
-                    <Col className='col-5'>
+                    <Col className='col-6'>
                     <Form.Control
                         type='number'
                         value={this.state.density}
@@ -137,7 +137,7 @@ class NameForm extends React.Component {
                 <Col className='col-5'>
                     <Form.Label>Adsorbate 1: </Form.Label>
                 </Col>
-                <Col className='col-5'>
+                <Col className='col-6'>
                     <Form.Control
                         as='select'
                         value={this.state.adsb1}
@@ -171,7 +171,7 @@ class NameForm extends React.Component {
                 <Col className='col-5'>
                 <Form.Label>Adsorbate 2: </Form.Label>
                 </Col>
-                <Col className='col-5'>
+                <Col className='col-6'>
                     <Form.Control
                         as='select'
                         value={this.state.adsb2}
