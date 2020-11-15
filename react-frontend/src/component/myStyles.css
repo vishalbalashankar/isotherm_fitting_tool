@@ -15,11 +15,8 @@
   display: flex;
   justify-content: center;
   padding: 0.5em;
-  background-color: rgb(105, 105, 105);
+  background-color: rgb(12, 26, 224);
   color: rgb(255, 255, 255);
-  overflow: visible;
-  position: "sticky";
-  top:0;
 }
 
 .SubTitle {
@@ -32,9 +29,12 @@
 }
 
 .container_form {
+  display: flex;
+  flex-wrap: wrap;
+  width: 100%;
   display: grid;
-  grid-gap: 20px;
-  grid-template-columns: repeat(3,1fr);
+  grid-gap: 0px;
+  grid-template-columns: repeat(3,2fr);
   padding: 1em;
   font-size: large;  
 }
@@ -44,6 +44,11 @@
   width: 100%;
   padding: 1em;
   background-color: #f0f0f0;
+}
+
+.item2style {
+  width: 5%;
+  padding: 1em;
 }
 
 .cardimagestyles {

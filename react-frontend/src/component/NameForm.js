@@ -210,11 +210,17 @@ class NameForm extends React.Component {
                 </Form.Group>
             </Form>
             </div>
-            <div className="item2">
-            <PlotIsotherms_1 IsPlot={this.state.IsSubmit}/>
+            <div className="item2style">
+            <PlotIsotherms_1 IsPlot={this.state.IsSubmit} AdsbName={this.state.adsb1}/>
+            </div>
+            <div className="item3style">
+            <PlotIsotherms_2 IsPlot={this.state.IsSubmit} AdsbName={this.state.adsb2}/>
             </div>
             <div className="item4">
-            <PlotIsotherms_2 IsPlot={this.state.IsSubmit}/>
+            </div>
+            <div className="item5">
+            </div>
+            <div className="item6">
             </div>
         </div>
 
