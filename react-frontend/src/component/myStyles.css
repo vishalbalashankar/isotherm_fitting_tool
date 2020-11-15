@@ -14,10 +14,11 @@
   width: 100%;
   display: flex;
   justify-content: center;
-  padding: 1em;
+  padding: 0.5em;
   margin-bottom: 1em;
   background-color: rgb(12, 26, 224);
   color: rgb(255, 255, 255);
+  opacity: 0.80;
 }
 
 .container_form {
@@ -25,26 +26,24 @@
   grid-gap: 20px;
   grid-template-columns: repeat(3,1fr);
   padding: 1em;
-  font-size: large;
-  font-weight: bold;
-  
+  font-size: large;  
 }
 
 .item1style {
-  border: 1px solid #1a202c;
   grid-row: span 2;
   width: 100%;
   padding: 1em;
+  background-color: #f0f0f0;
 }
 
 .cardimagestyles {
-  background-color: rgb(240, 251, 172);
+  background-color: #f0f0f0;
   border: none;
   width: 35%;
 }
   
 .cardstyles {
-  background-color: rgb(240, 251, 172);
+  background-color: #f0f0f0;
   border: none;
 }
 

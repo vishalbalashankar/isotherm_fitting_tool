@@ -201,7 +201,7 @@ class NameForm extends React.Component {
                 </Row>
                 </Form.Group>
                 <Form.Group>
-                <Button type='submit'>Submit</Button>
+                <Button className='btn btn-lg form-contorl col-sm-4' type='submit'>Submit</Button>
                 </Form.Group>
             </Form>
             </div>
