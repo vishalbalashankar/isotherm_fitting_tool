@@ -90,8 +90,13 @@ class NameForm extends React.Component {
                     <Card.Title>
                         Welcome!!
                     </Card.Title>
-                    <Card.Text>
-                        Start the adsorbent screening process by filling the form below. 
+                    <Card.Text style={{fontSize: 15}}>
+                        The adsorbent screening process consists of 3 broad steps: 
+                        <ul>
+                        <li>Fit your isotherms to a competitive Langmuir model. </li>  
+                        <li>Select the screening model of your choice. </li>
+                        <li>Obtain the optimized results in a VSA process.</li>
+                        </ul>
                     </Card.Text>
                 </Card.Body>
             </Card>
