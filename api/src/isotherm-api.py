@@ -9,6 +9,7 @@ from flask_cors import CORS
 from webargs import fields
 from webargs.flaskparser import use_kwargs, parser
 from get_isotherm import get_isotherm
+import pandas as pd
 
 def allowed_file(filename):
     return "." in filename and filename.rsplit(".", 1)[1].lower() in ALLOWED_EXTENSIONS
@@ -33,18 +34,18 @@ class Upload_File(Resource):
                 print("No files[] part exist", flush=True)
                 return redirect(request.url)
             files = request.files.getlist("files[]")
+            print("Size of Files", files, flush = True)
             for file in files:
+                print(file, flush=True)
                 if file.filename == "":
                     print("No selected file", flush=True)
-                    return redirect(request.url)
+                    return ""
                 if file and allowed_file(file.filename):
-                    filename = secure_filename(file.filename)
-                    destination = "/".join([target, filename])
-                    print(destination, flush=True)
-                    file.save(destination)
-                    print("Uploading incoming file:", filename, flush=True)
-                    return jsonify({"Result": "Welcome to GeeksForGeeks"})
-            return ""
+                    df = pd.read_csv(file)
+                    print(df, flush=True)
+                    print("Processing incoming file:", file.filename, flush=True)
+                    return ""
+            return jsonify({'isotherm': df.to_dict("records")})
 
 class Isotherms(Resource):
     def __init__(self):

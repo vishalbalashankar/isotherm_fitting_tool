@@ -6,6 +6,7 @@ import axios from 'axios'
 import PlotIsotherms_1 from './PlotIsotherms_1'
 import PlotIsotherms_2 from './PlotIsotherms_2'
 import Picture1 from './Picture1.png';
+import Plot from 'react-plotly.js'
 
 const initialState = {
     adsname: '',
@@ -21,6 +22,9 @@ class NameForm extends React.Component {
     constructor(props) {
         super(props)
         this.state = initialState;
+        this.state = {
+            resultiso: '',
+        }
         this.handleSubmit = this.handleSubmit.bind(this);
     }
 
@@ -60,12 +64,15 @@ class NameForm extends React.Component {
         if (isValid) {
             const fd = new FormData();
             fd.append('files[]',this.state.file_adsb1,this.state.file_adsb1.name)
-            fd.append('files[]',this.state.file_adsb2,this.state.file_adsb2.name)
+//            fd.append('files[]',this.state.file_adsb2,this.state.file_adsb2.name)
 
             axios.post('http://0.0.0.0:7501/upload-file',fd)
                 .then(res => {
-                    var result = res.data; 
-                    console.log(result);
+                    //var resultiso = res.data.isotherm; 
+                    // console.log(resultiso);
+                    this.setState({
+                        resultiso: res.data.isotherm
+                    });
                 })
                 .catch(errors =>{
                     console.log(errors)
@@ -212,10 +219,10 @@ class NameForm extends React.Component {
             </Form>
             </div>
             <div className="item2style">
-            <PlotIsotherms_1 IsPlot={this.state.IsSubmit} AdsbName={this.state.adsb1}/>
+                console.log(this.state.resultiso)
+                <PlotIsotherms_1 Isodata={this.state.resultiso} />
             </div>
             <div className="item3style">
-            <PlotIsotherms_2 IsPlot={this.state.IsSubmit} AdsbName={this.state.adsb2}/>
             </div>
             <div className="item4">
             </div>
