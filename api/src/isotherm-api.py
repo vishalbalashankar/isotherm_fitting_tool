@@ -43,7 +43,7 @@ class Upload_File(Resource):
                     print(destination, flush=True)
                     file.save(destination)
                     print("Uploading incoming file:", filename, flush=True)
-                    # return redirect(url_for('uploaded_file',filename=filename))
+                    return jsonify({"Result": "Welcome to GeeksForGeeks"})
             return ""
 
 class Isotherms(Resource):

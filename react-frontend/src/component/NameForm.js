@@ -64,7 +64,8 @@ class NameForm extends React.Component {
 
             axios.post('http://0.0.0.0:7501/upload-file',fd)
                 .then(res => {
-                    console.log(res);
+                    var result = res.data; 
+                    console.log(result);
                 })
                 .catch(errors =>{
                     console.log(errors)
