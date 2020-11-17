@@ -18,64 +18,68 @@ class PlotIsotherms_1 extends React.Component {
 
   render() {
    
-    
+    console.log(this.props.PlotData);
+    const isotherm = this.props.PlotData;
     return (
       <div>
-  
-  <Plot
-        data={[
-          {
-            x: this.state.xdata,
-            y: this.state.ydata,
-            type: 'scattergl',
-            mode: 'markers',
-            marker: {color: 'red'},
-            xtitle: "Pressure [bar]",
-          },
-        ]}
-        layout = { 
-          { 
-            width: 425,
-            height: 400,
-            title: this.props.AdsbName + ' Isotherm',
-            config: {
-              responsive: true
-            },
-            xaxis: {
-              zeroline: true,
-              ticks: 'outside',
-              title: 'Pressure [bar]',
-              range: [0,],
-              titlefont: {
-                size: 16,
+      
+      {isotherm ? 
+      
+      
+      <Plot
+            data={[
+              {
+                x:  isotherm.map( isotherm => isotherm.P),
+                y:  isotherm.map( isotherm => isotherm.q),
+                type: 'scattergl',
+                mode: 'markers',
+                marker: {color: 'red'},
+                xtitle: "Pressure [bar]",
               },
-              mirror: 'axes',
-              tickfont: {
-                size: 14,
-                color: 'black'
-              },
-            },
-            yaxis: {
-              ticks: 'outside',
-              mirror: 'allticks',
-              title: 'Equilibrium Loading [mol/kg]',
-              range: [0,],
-              titlefont: {
-                size: 16,
-              },
-              mirror: 'axes',
-              tickfont: {
-                size: 14,
-                color: 'black'
-              },
-            },
+            ]}
+            layout = { 
+              { 
+                width: 425,
+                height: 400,
+                title: this.props.AdsbName + ' Isotherm',
+                config: {
+                  responsive: true
+                },
+                xaxis: {
+                  zeroline: true,
+                  ticks: 'outside',
+                  title: 'Pressure [bar]',
+                  range: [0,],
+                  titlefont: {
+                    size: 16,
+                  },
+                  mirror: 'axes',
+                  tickfont: {
+                    size: 14,
+                    color: 'black'
+                  },
+                },
+                yaxis: {
+                  ticks: 'outside',
+                  mirror: 'allticks',
+                  title: 'Equilibrium Loading [mol/kg]',
+                  range: [0,],
+                  titlefont: {
+                    size: 16,
+                  },
+                  mirror: 'axes',
+                  tickfont: {
+                    size: 14,
+                    color: 'black'
+                  },
+                },
 
-          } 
-        }
-        />    
-        
-      </div>
-    );
+              } 
+            }
+            />  : null }  
+            
+          </div>
+        );
   }
 }
 

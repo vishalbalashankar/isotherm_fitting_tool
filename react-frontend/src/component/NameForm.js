@@ -20,7 +20,16 @@ const initialState = {
 class NameForm extends React.Component {
     constructor(props) {
         super(props)
-        this.state = initialState;
+        this.state = {
+            adsname: '',
+            density: '',
+            adsb1: 'co2',
+            adsb2: 'n2',
+            adsnameError: "",
+            densityError: "",
+            isoData: "",
+            IsSubmit: false
+        }
         this.handleSubmit = this.handleSubmit.bind(this);
     }
 
@@ -65,7 +74,9 @@ class NameForm extends React.Component {
             axios.post('http://0.0.0.0:7501/upload-file',fd)
                 .then(res => {
                     var resultiso = res.data.isotherm; 
-                    console.log(resultiso);
+                    this.setState({
+                        isoData: resultiso
+                    });
                 })
                 .catch(errors =>{
                     console.log(errors)
@@ -212,7 +223,7 @@ class NameForm extends React.Component {
             </Form>
             </div>
             <div className="item2style">
-            <PlotIsotherms_1 IsPlot={this.state.IsSubmit} AdsbName={this.state.adsb1}/>
+            <PlotIsotherms_1 IsPlot={this.state.IsSubmit} AdsbName={this.state.adsb1} PlotData={this.state.isoData}/>
             </div>
             <div className="item3style">
             </div>
