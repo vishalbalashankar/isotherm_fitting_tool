@@ -60,11 +60,12 @@ class NameForm extends React.Component {
         if (isValid) {
             const fd = new FormData();
             fd.append('files[]',this.state.file_adsb1,this.state.file_adsb1.name)
-            fd.append('files[]',this.state.file_adsb2,this.state.file_adsb2.name)
+            // fd.append('files[]',this.state.file_adsb2,this.state.file_adsb2.name)
 
             axios.post('http://0.0.0.0:7501/upload-file',fd)
                 .then(res => {
-                    console.log(res);
+                    var resultiso = res.data.isotherm; 
+                    console.log(resultiso);
                 })
                 .catch(errors =>{
                     console.log(errors)
@@ -214,7 +215,6 @@ class NameForm extends React.Component {
             <PlotIsotherms_1 IsPlot={this.state.IsSubmit} AdsbName={this.state.adsb1}/>
             </div>
             <div className="item3style">
-            <PlotIsotherms_2 IsPlot={this.state.IsSubmit} AdsbName={this.state.adsb2}/>
             </div>
             <div className="item4">
             </div>

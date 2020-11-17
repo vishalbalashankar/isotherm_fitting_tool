@@ -5,6 +5,7 @@ from flask_restful import Resource, Api
 import os 
 from werkzeug.utils import secure_filename
 from flask_cors import CORS
+import pandas as pd
 
 from webargs import fields
 from webargs.flaskparser import use_kwargs, parser
@@ -38,12 +39,10 @@ class Upload_File(Resource):
                     print("No selected file", flush=True)
                     return redirect(request.url)
                 if file and allowed_file(file.filename):
-                    filename = secure_filename(file.filename)
-                    destination = "/".join([target, filename])
-                    print(destination, flush=True)
-                    file.save(destination)
-                    print("Uploading incoming file:", filename, flush=True)
-                    # return redirect(url_for('uploaded_file',filename=filename))
+                    df = pd.read_csv(file)
+                    print(df, flush=True)
+                    print("Processing incoming file:", file.filename, flush=True)
+                    return jsonify({'isotherm': df.to_dict("records")})
             return ""
 
 class Isotherms(Resource):
