@@ -15,7 +15,7 @@ class PlotIsotherms_2 extends React.Component {
   }
   
   componentDidMount() {
-    this.applyData();
+  //  this.applyData();
   }
 
   applyData = () => {

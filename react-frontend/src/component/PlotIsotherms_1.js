@@ -13,7 +13,7 @@ class PlotIsotherms_1 extends React.Component {
     this.applyData = this.applyData.bind(this);
   }
   componentDidMount() {
-    this.applyData();
+  //  this.applyData();
   }
   applyData = () => {
     axios.get('http://0.0.0.0:7501/isotherms/?adsbnum=1')
