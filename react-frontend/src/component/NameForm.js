@@ -3,8 +3,7 @@ import 'bootstrap/dist/css/bootstrap.min.css'
 import {Form, Row, Col, Button, Card} from 'react-bootstrap'
 import './myStyles.css'
 import axios from 'axios'
-import PlotIsotherms_1 from './PlotIsotherms_1'
-import PlotIsotherms_2 from './PlotIsotherms_2'
+import PlotIsotherm from './PlotIsotherm'
 import Picture1 from './Picture1.png';
 
 const initialState = {
@@ -236,10 +235,10 @@ class NameForm extends React.Component {
             </Form>
             </div>
             <div className="item2style">
-            <PlotIsotherms_1 isplot={this.state.issubmit} adsbname={this.state.adsb1} plotdata={this.state.isodata_1}/>
+            <PlotIsotherm isplot={this.state.issubmit} adsbname={this.state.adsb1} plotdata={this.state.isodata_1}/>
             </div>
             <div className="item3style">
-            <PlotIsotherms_2 isplot={this.state.issubmit} adsbname={this.state.adsb2} plotdata={this.state.isodata_2}/>
+            <PlotIsotherm isplot={this.state.issubmit} adsbname={this.state.adsb2} plotdata={this.state.isodata_2}/>
             </div>
             <div className="item4">
             </div>

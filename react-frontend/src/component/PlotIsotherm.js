@@ -1,8 +1,7 @@
 import React from 'react';
 import Plot from 'react-plotly.js';
-import axios from 'axios';
 
-class PlotIsotherms_1 extends React.Component {
+class PlotIsotherm extends React.Component {
   constructor(props) {
     super(props);
     this.state = {
@@ -127,4 +126,4 @@ class PlotIsotherms_1 extends React.Component {
   }
 }
 
-export default PlotIsotherms_1
+export default PlotIsotherm
