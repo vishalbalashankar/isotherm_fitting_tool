@@ -13,7 +13,6 @@ from get_isotherm import get_isotherm
 def allowed_file(filename):
     return "." in filename and filename.rsplit(".", 1)[1].lower() in ALLOWED_EXTENSIONS
 
-UPLOAD_FOLDER = "/app/userfile_uploads"
 ALLOWED_EXTENSIONS = set(["csv", "xlsx"])
 
 class Upload_File(Resource):
@@ -22,11 +21,6 @@ class Upload_File(Resource):
         super()
 
     def post(self):
-        target = UPLOAD_FOLDER
-        print(target, flush=True)
-        if not os.path.isdir(target):
-            print("Folder not available, creating a new directory", flush=True)
-            os.mkdir(target)
         if request.method == "POST":
             # Check if the post request has the file part
             if "files[]" not in request.files:
@@ -39,10 +33,7 @@ class Upload_File(Resource):
                     return redirect(request.url)
                 if file and allowed_file(file.filename):
                     filename = secure_filename(file.filename)
-                    destination = "/".join([target, filename])
-                    print(destination, flush=True)
-                    file.save(destination)
-                    print("Uploading incoming file:", filename, flush=True)
+                    print("Processing incoming file:", filename, flush=True)
                     # return redirect(url_for('uploaded_file',filename=filename))
             return ""
 
