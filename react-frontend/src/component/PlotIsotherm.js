@@ -12,7 +12,8 @@ class PlotIsotherm extends React.Component {
   
   render() {
 
-    const isotherm = this.props.plotdata;
+    const isotherm = this.props.plotdata.isotherm;
+    const isotherm_fit = this.props.plotdata.isotherm_fit;
    
     return (
       <div>
@@ -27,8 +28,16 @@ class PlotIsotherm extends React.Component {
                       type: 'scattergl',
                       mode: 'markers',
                       marker: {color: 'red'},
-                      xtitle: "Pressure [bar]",
+                      name: "Exp"
                     },
+                    {
+                      x:  isotherm_fit.map( isotherm_fit => isotherm_fit.Pfit),
+                      y:  isotherm_fit.map( isotherm_fit => isotherm_fit.qfit),
+                      type: 'scattergl',
+                      mode: 'line',
+                      marker: {color: 'blue'},
+                      name: "Fit"
+                    }
                   ]}
                   layout = { 
                     { 

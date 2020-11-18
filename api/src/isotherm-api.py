@@ -34,9 +34,9 @@ class Upload_File_1(Resource):
                     return redirect(request.url)
                 if file and allowed_file(file.filename):
                     df = pd.read_csv(file)
-                    print(df, flush=True)
                     print("Processing incoming file:", file.filename, flush=True)
-                    return jsonify({'isotherm': df.to_dict("records")})
+                    initialGuess=[2.0,0.01]
+                    return jsonify({'isotherm': df.to_dict("records"),'isotherm_fit': get_isotherm(df,initialGuess)})
             return ""
 
 class Upload_File_2(Resource):
@@ -57,9 +57,12 @@ class Upload_File_2(Resource):
                     return redirect(request.url)
                 if file and allowed_file(file.filename):
                     df = pd.read_csv(file)
-                    print(df, flush=True)
                     print("Processing incoming file:", file.filename, flush=True)
-                    return jsonify({'isotherm': df.to_dict("records")})
+                    initialGuess=[6,0.001]
+                    print("N2 working here", flush=True)
+                    print(get_isotherm(df,initialGuess))
+                    print("N2 worked perfectly here", flush=True)
+                    return jsonify({'isotherm': df.to_dict("records"),'isotherm_fit': get_isotherm(df,initialGuess)})
             return ""
 
 app = Flask(__name__)

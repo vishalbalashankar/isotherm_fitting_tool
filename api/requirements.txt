@@ -5,3 +5,5 @@ Flask-Cors==3.0.9
 Werkzeug==1.0.1
 Pandas==1.1.4
 Webargs==6.1.1
+Scikit-Optimize==0.8.1
+Numpy==1.19.4

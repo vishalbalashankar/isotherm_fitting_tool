@@ -76,7 +76,7 @@ class NameForm extends React.Component {
             axios.post('http://0.0.0.0:7501/upload-file-1',fd_1)
                 .then(res => {
                     this.setState({
-                        isodata_1: res.data.isotherm
+                        isodata_1: res.data
                     });
                     console.log(res);
                 })
@@ -84,11 +84,11 @@ class NameForm extends React.Component {
                     console.log(errors)
                 })
             axios.post('http://0.0.0.0:7501/upload-file-2',fd_2)
-                .then(res => {
+                .then(res_2 => {
                     this.setState({
-                        isodata_2: res.data.isotherm
+                        isodata_2: res_2.data
                     });
-                    console.log(res);
+                    console.log(res_2);
                 })
                 .catch(errors =>{
                     console.log(errors)
