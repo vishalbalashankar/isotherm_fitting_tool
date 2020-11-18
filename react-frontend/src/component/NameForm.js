@@ -14,13 +14,23 @@ const initialState = {
     adsb2: 'n2',
     adsnameError: "",
     densityError: "",
-    IsSubmit: false
+    issubmit: false
 }
 
 class NameForm extends React.Component {
     constructor(props) {
         super(props)
-        this.state = initialState;
+        this.state = {
+            adsname: '',
+            density: '',
+            adsb1: 'co2',
+            adsb2: 'n2',
+            adsnameError: "",
+            densityError: "",
+            isodata_1: "",
+            isodata_2: "",
+            issubmit: false
+        };
         this.handleSubmit = this.handleSubmit.bind(this);
     }
 
@@ -58,23 +68,38 @@ class NameForm extends React.Component {
         event.preventDefault();
         const isValid = this.validate();
         if (isValid) {
-            const fd = new FormData();
-            fd.append('files[]',this.state.file_adsb1,this.state.file_adsb1.name)
-            fd.append('files[]',this.state.file_adsb2,this.state.file_adsb2.name)
+            const fd_1 = new FormData();
+            const fd_2 = new FormData();
 
-            axios.post('http://0.0.0.0:7501/upload-file',fd)
+            fd_1.append('files[]',this.state.file_adsb1,this.state.file_adsb1.name)
+            fd_2.append('files[]',this.state.file_adsb2,this.state.file_adsb2.name)
+
+            axios.post('http://0.0.0.0:7501/upload-file-1',fd_1)
                 .then(res => {
+                    this.setState({
+                        isodata_1: res.data.isotherm
+                    });
                     console.log(res);
                 })
                 .catch(errors =>{
                     console.log(errors)
                 })
+            axios.post('http://0.0.0.0:7501/upload-file-2',fd_2)
+                .then(res => {
+                    this.setState({
+                        isodata_2: res.data.isotherm
+                    });
+                    console.log(res);
+                })
+                .catch(errors =>{
+                    console.log(errors)
+                })    
             this.setState(initialState);
             this.refs.file_1.value = '';
             this.refs.file_2.value = '';
             alert('A name was submitted: ' + this.state.adsname); 
             this.setState({
-                IsSubmit: true
+                issubmit: true
             })
         }
     }
@@ -211,10 +236,10 @@ class NameForm extends React.Component {
             </Form>
             </div>
             <div className="item2style">
-            <PlotIsotherms_1 IsPlot={this.state.IsSubmit} AdsbName={this.state.adsb1}/>
+            <PlotIsotherms_1 isplot={this.state.issubmit} adsbname={this.state.adsb1} plotdata={this.state.isodata_1}/>
             </div>
             <div className="item3style">
-            <PlotIsotherms_2 IsPlot={this.state.IsSubmit} AdsbName={this.state.adsb2}/>
+            <PlotIsotherms_2 isplot={this.state.issubmit} adsbname={this.state.adsb2} plotdata={this.state.isodata_2}/>
             </div>
             <div className="item4">
             </div>

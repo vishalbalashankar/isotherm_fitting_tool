@@ -5,6 +5,7 @@ from flask_restful import Resource, Api
 import os 
 from werkzeug.utils import secure_filename
 from flask_cors import CORS
+import pandas as pd
 
 from webargs import fields
 from webargs.flaskparser import use_kwargs, parser
@@ -15,7 +16,7 @@ def allowed_file(filename):
 
 ALLOWED_EXTENSIONS = set(["csv", "xlsx"])
 
-class Upload_File(Resource):
+class Upload_File_1(Resource):
     def __init__(self):
         self.output_name = "Upload_File" 
         super()
@@ -32,18 +33,41 @@ class Upload_File(Resource):
                     print("No selected file", flush=True)
                     return redirect(request.url)
                 if file and allowed_file(file.filename):
-                    filename = secure_filename(file.filename)
-                    print("Processing incoming file:", filename, flush=True)
-                    # return redirect(url_for('uploaded_file',filename=filename))
+                    df = pd.read_csv(file)
+                    print(df, flush=True)
+                    print("Processing incoming file:", file.filename, flush=True)
+                    return jsonify({'isotherm': df.to_dict("records")})
             return ""
 
+class Upload_File_2(Resource):
+    def __init__(self):
+        self.output_name = "Upload_File" 
+        super()
+
+    def post(self):
+        if request.method == "POST":
+            # Check if the post request has the file part
+            if "files[]" not in request.files:
+                print("No files[] part exist", flush=True)
+                return redirect(request.url)
+            files = request.files.getlist("files[]")
+            for file in files:
+                if file.filename == "":
+                    print("No selected file", flush=True)
+                    return redirect(request.url)
+                if file and allowed_file(file.filename):
+                    df = pd.read_csv(file)
+                    print(df, flush=True)
+                    print("Processing incoming file:", file.filename, flush=True)
+                    return jsonify({'isotherm': df.to_dict("records")})
+            return ""
 
 app = Flask(__name__)
 CORS(app)
 api = Api(app)
 
-api.add_resource(Upload_File,"/upload-file")
-
+api.add_resource(Upload_File_1,"/upload-file-1")
+api.add_resource(Upload_File_2,"/upload-file-2")
 
 if __name__ == "__main__":
     app.run(host='0.0.0.0', port=7501, debug=True)
