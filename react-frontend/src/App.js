@@ -10,6 +10,9 @@ function App() {
   return (
     <Router>
       <div>
+      <div class="item1">
+            <IsoTitle />
+      </div>
         <Switch>
           <Route path="/" exact component={StartPage} />
           <Route path="/isothermfit" exact component={NameForm} />     

@@ -7,9 +7,6 @@ import {Link} from 'react-router-dom';
 function StartPage() {
   return (
     <div>
-        <div class="item1">
-            <IsoTitle />
-        </div>
         <div class="buttonContainer" >
             <Link to="/isothermfit">
                 <Button className="btn-size" variant="primary" size="lg">Fit Isotherms</Button>{" "}

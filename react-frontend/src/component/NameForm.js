@@ -73,7 +73,7 @@ class NameForm extends React.Component {
             fd_1.append('files[]',this.state.file_adsb1,this.state.file_adsb1.name)
             fd_2.append('files[]',this.state.file_adsb2,this.state.file_adsb2.name)
 
-            axios.post('http://0.0.0.0:50504/uploadfile',fd_1)
+            axios.post('http://0.0.0.0:63663/uploadfile',fd_1)
                 .then(res => {
                     this.setState({
                         isodata_1: res.data
@@ -83,7 +83,7 @@ class NameForm extends React.Component {
                 .catch(errors =>{
                     console.log(errors)
                 })
-            axios.post('http://0.0.0.0:50504/uploadfile',fd_2)
+            axios.post('http://0.0.0.0:63663/uploadfile',fd_2)
                 .then(res_2 => {
                     this.setState({
                         isodata_2: res_2.data
@@ -106,24 +106,6 @@ class NameForm extends React.Component {
         return(
         <div className="container_form">
             <div className="item1style">
-            <Card className="cardstyles" >
-                <div class="text-center">
-                <Card.Img src={Picture1}  className="cardimagestyles"/>
-                </div>
-                <Card.Body>
-                    <Card.Title>
-                        Welcome!!
-                    </Card.Title>
-                    <Card.Text style={{fontSize: 15}}>
-                        The adsorbent screening process consists of 3 broad steps: 
-                        <ul>
-                        <li>Fit your isotherms to a competitive Langmuir model. </li>  
-                        <li>Select the screening model of your choice. </li>
-                        <li>Obtain the optimized results in a VSA process.</li>
-                        </ul>
-                    </Card.Text>
-                </Card.Body>
-            </Card>
             <Form onSubmit={this.handleSubmit}>
                 <Form.Group >
                     <Row>

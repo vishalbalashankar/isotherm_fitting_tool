@@ -15,6 +15,7 @@
   display: flex;
   justify-content: center;
   padding: 0.5em;
+  font-size: 27px;
   background-color: rgb(12, 26, 224);
   color: rgb(255, 255, 255);
 }
@@ -24,31 +25,38 @@
   display: flex;
   justify-content: center;
   padding: 0.25em;
-  font-size: 27px;
+  font-size: 20px;
   color: rgb(0, 0, 0);
 }
 
 .container_form {
+  height: 100vh; 
   display: flex;
   flex-wrap: wrap;
   width: 100%;
+  max-width: 1600px;
+  justify-content: center;
+  align-items: center;
+  flex:1;
   display: grid;
   grid-gap: 0px;
   grid-template-columns: repeat(3,2fr);
   padding: 1em;
   font-size: large;  
+  margin: 0 auto !important; 
+	float: none !important; 
 }
 
 .item1style {
-  grid-row: span 2;
   width: 100%;
   padding: 1em;
   background-color: #f0f0f0;
 }
 
 .item2style {
-  width: 5%;
   padding: 1em;
+  justify-content: center;
+  align-items: center;
 }
 
 .cardimagestyles {
