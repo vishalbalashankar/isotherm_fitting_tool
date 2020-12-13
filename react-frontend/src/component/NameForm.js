@@ -83,7 +83,7 @@ class NameForm extends React.Component {
                 .catch(errors =>{
                     console.log(errors)
                 })
-            axios.post('http://0.0.0.0:7501/upload-file-2',fd_2)
+            axios.post('http://0.0.0.0:7501/upload-file-1',fd_2)
                 .then(res_2 => {
                     this.setState({
                         isodata_2: res_2.data
