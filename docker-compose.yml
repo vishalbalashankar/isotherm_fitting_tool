@@ -1,14 +1,15 @@
-version: '3.4'
+version: '3.3'
 services:
-  react-frontend:  
-    build: react-frontend
+  react-frontend:
+    stdin_open: true  
+    build: ./react-frontend
     image: isotherm_fitting_tool/react-frontend:latest
     restart: always
     ports: 
       - "7500:3000"
     stdin_open: true
   isotherm-api:
-    build: api
+    build: ./api
     image: isotherm_fitting_tool/api:latest
     restart: always
     ports:

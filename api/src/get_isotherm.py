@@ -18,7 +18,7 @@ def get_isotherm(df_adsb,initialGuess):
         return qiso
     xData=df_adsb['P'].to_numpy()
     yData=df_adsb['q'].to_numpy()
-    popt, pcov = curve_fit(isotherm, xData, yData, initialGuess)
+    popt, pcov = curve_fit(isotherm, xData, yData, p0 = initialGuess, maxfev=50000)
     print('I am working', flush=True)
     xFit = np.arange(0,1,0.01)
     yFit = isotherm(xFit,popt[0],popt[1])
