@@ -73,7 +73,7 @@ class NameForm extends React.Component {
             fd_1.append('files[]',this.state.file_adsb1,this.state.file_adsb1.name)
             fd_2.append('files[]',this.state.file_adsb2,this.state.file_adsb2.name)
 
-            axios.post('http://0.0.0.0:7501/uploadfile',fd_1)
+            axios.post('http://0.0.0.0:50504/uploadfile',fd_1)
                 .then(res => {
                     this.setState({
                         isodata_1: res.data
@@ -83,7 +83,7 @@ class NameForm extends React.Component {
                 .catch(errors =>{
                     console.log(errors)
                 })
-            axios.post('http://0.0.0.0:7501/uploadfile',fd_2)
+            axios.post('http://0.0.0.0:50504/uploadfile',fd_2)
                 .then(res_2 => {
                     this.setState({
                         isodata_2: res_2.data
