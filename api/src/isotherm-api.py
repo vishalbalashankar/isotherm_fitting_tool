@@ -16,6 +16,10 @@ def allowed_file(filename):
 
 ALLOWED_EXTENSIONS = set(["csv", "xlsx"])
 
+class HelloWorld(Resource):	
+    def get(self):	
+        return jsonify({'isotherm': "I am Working"})
+
 class Upload_File(Resource):
     def __init__(self):
         self.output_name = "Upload_File" 
@@ -35,7 +39,7 @@ class Upload_File(Resource):
                 if file and allowed_file(file.filename):
                     df = pd.read_csv(file)
                     print("Processing incoming file:", file.filename, flush=True)
-                    initialGuess=[2.0,0.01]
+                    initialGuess=[2.0, 0.01, -1500]
                     return jsonify({'isotherm': df.to_dict("records"),'isotherm_fit': get_isotherm(df,initialGuess)})
             return ""
 
@@ -44,6 +48,7 @@ CORS(app)
 api = Api(app)
 
 api.add_resource(Upload_File,"/uploadfile")
+api.add_resource(HelloWorld,"/testing")
 
 if __name__ == "__main__":
     app.run(host='0.0.0.0', port=7501, debug=True)
