@@ -16,7 +16,7 @@ def allowed_file(filename):
 
 ALLOWED_EXTENSIONS = set(["csv", "xlsx"])
 
-class Upload_File_1(Resource):
+class Upload_File(Resource):
     def __init__(self):
         self.output_name = "Upload_File" 
         super()
@@ -43,7 +43,7 @@ app = Flask(__name__)
 CORS(app)
 api = Api(app)
 
-api.add_resource(Upload_File_1,"/upload-file-1")
+api.add_resource(Upload_File,"/uploadfile")
 
 if __name__ == "__main__":
     app.run(host='0.0.0.0', port=7501, debug=True)
