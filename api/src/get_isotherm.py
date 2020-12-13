@@ -19,13 +19,11 @@ def get_isotherm(df_adsb,initialGuess):
     xData=df_adsb['P'].to_numpy()
     yData=df_adsb['q'].to_numpy()
     popt, pcov = curve_fit(isotherm, xData, yData, p0 = initialGuess, maxfev=50000)
-    print('I am working', flush=True)
     xFit = np.arange(0,1,0.01)
     yFit = isotherm(xFit,popt[0],popt[1])
-    print('I am working fine fit', flush=True)
+    print('Curve fit in Progress', flush=True)
     df_fit = pd.DataFrame(columns = ['Pfit', 'qfit']) 
     df_fit['Pfit'] = xFit
     df_fit['qfit'] = yFit
-    print(df_fit)
     return df_fit.to_dict("records")
 
