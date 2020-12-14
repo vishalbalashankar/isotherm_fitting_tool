@@ -35,5 +35,6 @@ def get_isotherm(df_adsb,initialGuess):
     df_fit = pd.DataFrame(columns = ['Pfit', 'qfit']) 
     df_fit['Pfit'] = xFit
     df_fit['qfit'] = yFit
-    return df_fit.to_dict("records")
+    fitparam = ["qsat", "b0", "dUb"]
+    return df_fit.to_dict("records"), dict(zip(fitparam,popt))
 

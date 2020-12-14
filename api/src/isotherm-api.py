@@ -40,7 +40,8 @@ class Upload_File(Resource):
                     df = pd.read_csv(file)
                     print("Processing incoming file:", file.filename, flush=True)
                     initialGuess=[2.0, 0.01, -1500]
-                    return jsonify({'isotherm': df.to_dict("records"),'isotherm_fit': get_isotherm(df,initialGuess)})
+                    isotherm_fit, fitvals = get_isotherm(df,initialGuess)
+                    return jsonify({'isotherm': df.to_dict("records"),'isotherm_fit': isotherm_fit, 'popt': fitvals})
             return ""
 
 app = Flask(__name__)
