@@ -1,7 +1,25 @@
 import React from 'react';
 import Plot from 'react-plotly.js';
 
-const getLayout = ( { adsbname }) => (
+const getData = ( {isotherm, isotherm_fit} ) => ([
+  {
+    x:  isotherm.map( isotherm => isotherm.P),
+    y:  isotherm.map( isotherm => isotherm.q),
+    type: 'scattergl',
+    mode: 'markers',
+    marker: {color: 'red'},
+    name: "Exp"
+  },
+  {
+    x:  isotherm_fit.map( isotherm_fit => isotherm_fit.Pfit),
+    y:  isotherm_fit.map( isotherm_fit => isotherm_fit.qfit),
+    type: 'scattergl',
+    mode: 'line',
+    marker: {color: 'blue'},
+    name: "Fit"
+  }
+]);
+const getLayout = ( { adsbname } ) => (
   { 
     width: 425,
     height: 400,
@@ -42,24 +60,7 @@ const getLayout = ( { adsbname }) => (
 
 const FullView = ( { isotherm, isotherm_fit, adsbname} ) => (
   <Plot
-    data={[
-      {
-        x:  isotherm.map( isotherm => isotherm.P),
-        y:  isotherm.map( isotherm => isotherm.q),
-        type: 'scattergl',
-        mode: 'markers',
-        marker: {color: 'red'},
-        name: "Exp"
-      },
-      {
-        x:  isotherm_fit.map( isotherm_fit => isotherm_fit.Pfit),
-        y:  isotherm_fit.map( isotherm_fit => isotherm_fit.qfit),
-        type: 'scattergl',
-        mode: 'line',
-        marker: {color: 'blue'},
-        name: "Fit"
-      }
-    ]}
+    data={ getData ( {isotherm, isotherm_fit} ) }
     layout = { getLayout( { adsbname }) }
     />
 );

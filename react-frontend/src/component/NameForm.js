@@ -73,7 +73,7 @@ class NameForm extends React.Component {
             fd_1.append('files[]',this.state.file_adsb1,this.state.file_adsb1.name)
             fd_2.append('files[]',this.state.file_adsb2,this.state.file_adsb2.name)
 
-            axios.post('http://0.0.0.0:63663/uploadfile',fd_1)
+            axios.post('http://0.0.0.0:51035/uploadfile',fd_1)
                 .then(res => {
                     this.setState({
                         isodata_1: res.data
@@ -83,7 +83,7 @@ class NameForm extends React.Component {
                 .catch(errors =>{
                     console.log(errors)
                 })
-            axios.post('http://0.0.0.0:63663/uploadfile',fd_2)
+            axios.post('http://0.0.0.0:51035/uploadfile',fd_2)
                 .then(res_2 => {
                     this.setState({
                         isodata_2: res_2.data
@@ -217,10 +217,10 @@ class NameForm extends React.Component {
             </Form>
             </div>
             <div className="item2style">
-            <PlotIsotherm isplot={this.state.issubmit} adsbname={this.state.adsb1} plotdata={this.state.isodata_1}/>
+            <PlotIsotherm adsbname={this.state.adsb1} isotherm={this.state.isodata_1.isotherm} isotherm_fit={this.state.isodata_1.isotherm_fit}/>
             </div>
             <div className="item3style">
-            <PlotIsotherm isplot={this.state.issubmit} adsbname={this.state.adsb2} plotdata={this.state.isodata_2}/>
+            <PlotIsotherm adsbname={this.state.adsb2} isotherm={this.state.isodata_2.isotherm} isotherm_fit={this.state.isodata_2.isotherm_fit}/>
             </div>
             <div className="item4">
             </div>
