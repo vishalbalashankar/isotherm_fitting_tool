@@ -89,7 +89,7 @@ class NameForm extends React.Component {
                     this.setState({
                         isodata_2: res_2.data
                     });
-                    console.log(res_2);
+                    console.log(this.state.isodata_2.popt)
                 })
                 .catch(errors =>{
                     console.log(errors)
@@ -226,8 +226,10 @@ class NameForm extends React.Component {
             <div className="item4">
             </div>
             <div className="item5">
+            <DispParams adsbname={this.state.adsb1} popt={this.state.isodata_1.popt}/>
             </div>
             <div className="item6">
+            <DispParams adsbname={this.state.adsb2} popt={this.state.isodata_2.popt}/>
             </div>
         </div>
 

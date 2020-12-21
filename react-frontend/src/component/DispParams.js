@@ -1,13 +1,13 @@
 import React from 'react';
 
-const FullView = ( { adsbname, qsat, b0, dUb } ) => {
+const FullView = ( { adsbname, popt } ) => {
     return (
         <div>
             <h3>{adsbname} fit</h3>
             <ul>
-                <li>qSat = {qsat}</li>
-                <li>delH = {dUb}</li>
-                <li>b = {b0}</li>
+                <li>qsat = {popt.qsat}</li>
+                <li>delH = {popt.dUb}</li>
+                <li>b0 = {popt.b0}</li>
             </ul>
         </div>
     )
@@ -26,7 +26,7 @@ const BlankView = ( { adsbname } ) => {
     )
 }
 
-const DispParams = props => props.b0 
+const DispParams = props => props.popt 
   ? <FullView {...props} />
   : <BlankView  {...props}  />
 
