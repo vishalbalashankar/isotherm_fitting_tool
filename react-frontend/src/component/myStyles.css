@@ -11,8 +11,8 @@
 /*  src/Title.css  */
 .Title {
   box-sizing: border-box;
-  width: 100%;
   display: flex;
+  flex:1 ; 
   justify-content: center;
   padding: 0.5em;
   font-size: 27px;
@@ -30,45 +30,38 @@
 }
 
 .container_form {
-  height: 100vh; 
   display: flex;
   flex-wrap: wrap;
-  width: 100%;
-  max-width: 1600px;
+/*  width: 100%; */
+/*   width: 1300px; */
+/*  max-width: 1600px; */
   justify-content: center;
   align-items: center;
   flex:1;
   display: grid;
   grid-gap: 0px;
-  grid-template-columns: repeat(3,2fr);
+  grid-template-columns: repeat(3,2fr); 
   padding: 1em;
   font-size: large;  
-  margin: 0 auto !important; 
-	float: none !important; 
+/*  margin: 0 auto !important; */ 
+  margin: auto;
+/*	float: none !important; */
 }
 
 .item1style {
-  width: 100%;
+  border: 1px solid #aaa;
+  border-radius: 10px; 
   padding: 1em;
   background-color: #f0f0f0;
+  margin: 2px;
+  max-width: 400px; 
+  /* min-width: 400px; */
 }
 
-.item2style {
-  padding: 1em;
-  justify-content: center;
-  align-items: center;
-}
-
-.cardimagestyles {
-  background-color: #f0f0f0;
-  border: none;
-  width: 35%;
-}
-  
-.cardstyles {
-  background-color: #f0f0f0;
-  border: none;
-  width: 100%;
+.plotstyle {
+  max-width: 500px;
+  /*width: 400px;*/ 
+  /* min-width: 400px; */
 }
 
 .smaller-input {

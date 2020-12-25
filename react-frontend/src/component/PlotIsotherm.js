@@ -21,12 +21,13 @@ const getData = ( {isotherm, isotherm_fit} ) => ([
 ]);
 const getLayout = ( { adsbname } ) => (
   { 
-    width: 425,
-    height: 400,
+    /*width: 450,
+    height: 400, */
+    autosize: true,
     title: `${adsbname} Isotherm`,
-    config: {
+/*    config: {
       responsive: true
-    },
+    }, */
     xaxis: {
       zeroline: true,
       ticks: 'outside',
@@ -78,6 +79,8 @@ const BlankView = ( { adsbname } ) => (
         },
       ]}
       layout = { getLayout( { adsbname }) }
+      useResizeHandler = {[true]}
+      style = {{width: "100%", height: "100%"}}
       />
 
 );

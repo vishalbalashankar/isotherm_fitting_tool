@@ -15,7 +15,8 @@ function App() {
       </div>
         <Switch>
           <Route path="/" exact component={StartPage} />
-          <Route path="/isothermfit" exact component={NameForm} />     
+          <Route path="/isothermfit" exact component={NameForm} /> 
+          <Route path="/plotisotherm" exact component={NameForm} />    
         </Switch>
       </div>
     </Router>
