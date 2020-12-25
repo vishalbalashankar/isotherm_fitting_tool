@@ -1,19 +1,13 @@
 import React from 'react'
 import 'bootstrap/dist/css/bootstrap.min.css'
-import { Form, Container, Row, Col, Button} from 'react-bootstrap'
+import { Form, Container, Row, Col, Button } from 'react-bootstrap'
 import './myStyles.css'
 import axios from 'axios'
 import PlotIsotherm from './PlotIsotherm'
-import DispParams from './DispParams'
-import Picture1 from './Picture1.png';
 
 const initialState = {
-    adsname: '',
-    density: '',
     adsb1: 'co2',
     adsb2: 'n2',
-    adsnameError: "",
-    densityError: "",
     issubmit: false
 }
 
@@ -44,7 +38,7 @@ class NameForm extends React.Component {
     }
 
     validate = () => {
-            return true;
+        return true;
     }
 
     handleSubmit(event) {
@@ -93,13 +87,12 @@ class NameForm extends React.Component {
                     <Col>
                         <div className="item1style">
                             <Form onSubmit={this.handleSubmit}>
-    
                                 <Form.Group>
-                                    <Form.Row>
-                                        <Col className='col-5'>
+                                    <Form.Row className="item_style">
+                                        <Col sm="2">
                                             <Form.Label>Adsorbate 1: </Form.Label>
                                         </Col>
-                                        <Col className='col-6'>
+                                        <Col sm="3">
                                             <Form.Control
                                                 as='select'
                                                 value={this.state.adsb1}
@@ -112,9 +105,20 @@ class NameForm extends React.Component {
                                                 <option value="ar">Argon</option>
                                             </Form.Control>
                                         </Col>
-                                        <Col className='col-5'>
+                                        <Col sm="2">
+                                            <Form.Control placeholder="qSat" size="sm" />
                                         </Col>
-                                        <Col className='col-4'>
+                                        <Col sm="2">
+                                            <Form.Control placeholder="b0" size="sm" />
+                                        </Col>
+                                        <Col sm="2">
+                                            <Form.Control placeholder="delH" size="sm" />
+                                        </Col>
+                                    </Form.Row>
+                                    <Form.Row>
+                                        <Col sm="2">
+                                        </Col>
+                                        <Col sm="3">
                                             <Form.File
                                                 className="position-relative"
                                                 required
@@ -124,10 +128,12 @@ class NameForm extends React.Component {
                                                 onChange={(event) => this.handleFile(event, 'file_adsb1')}
                                             />
                                         </Col>
-                                        <Col className='col-5'>
+                                    </Form.Row>
+                                    <Form.Row  className="item_style">
+                                        <Col sm="2">
                                             <Form.Label>Adsorbate 2: </Form.Label>
                                         </Col>
-                                        <Col className='col-6'>
+                                        <Col sm="3">
                                             <Form.Control
                                                 as='select'
                                                 value={this.state.adsb2}
@@ -140,9 +146,21 @@ class NameForm extends React.Component {
                                                 <option value="ar">Argon</option>
                                             </Form.Control>
                                         </Col>
-                                        <Col className='col-5'>
+                                        <Col sm="2">
+                                            <Form.Control placeholder="qSat" size="sm" />
                                         </Col>
-                                        <Col className='col-4'>
+                                        <Col sm="2">
+                                            <Form.Control placeholder="b0" size="sm" />
+                                        </Col>
+                                        <Col sm="2">
+                                            <Form.Control placeholder="delH" size="sm" />
+                                        </Col>
+
+                                    </Form.Row>
+                                    <Form.Row>
+                                        <Col sm="2">
+                                        </Col>
+                                        <Col sm="3">
                                             <Form.File
                                                 className="position-relative"
                                                 required
@@ -153,9 +171,9 @@ class NameForm extends React.Component {
                                             />
                                         </Col>
                                     </Form.Row>
-                                </Form.Group>
-                                <Form.Group>
-                                    <Button className='btn btn-lg form-contorl col-sm-4' type='submit'>Submit</Button>
+                                    <Form.Row className="item_style">
+                                        <Button type='submit'>Submit</Button>
+                                    </Form.Row>
                                 </Form.Group>
                             </Form>
                         </div>
@@ -175,9 +193,6 @@ class NameForm extends React.Component {
 
                 </Row>
             </Container>
-
-
-
         )
     }
 }

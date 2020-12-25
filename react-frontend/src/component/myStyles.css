@@ -53,13 +53,17 @@
   border-radius: 10px; 
   padding: 1em;
   background-color: #f0f0f0;
-  margin: 2px;
-  max-width: 400px; 
+  align-items: center;
+  justify-content: center;
+/*  margin: 2px;  */ 
   /* min-width: 400px; */
 }
 
+.item_style {
+  padding: 0.5em;
+}
 .plotstyle {
-  max-width: 500px;
+  max-width: 350px; 
   /*width: 400px;*/ 
   /* min-width: 400px; */
 }
