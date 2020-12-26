@@ -16,11 +16,15 @@ class NameForm extends React.Component {
         super(props)
         this.state = {
             adsb1: 'co2',
-            adsb2: 'n2',
-            adsnameError: "",
-            densityError: "",
             isodata_1: "",
+            qsat1: "",
+            b01: "",
+            delu1: "",
+            adsb2: 'n2',
             isodata_2: "",
+            qsat2: "",
+            b02: "",
+            delu2: "",
             issubmit: false
         };
         this.handleSubmit = this.handleSubmit.bind(this);
@@ -106,13 +110,13 @@ class NameForm extends React.Component {
                                             </Form.Control>
                                         </Col>
                                         <Col sm="2">
-                                            <Form.Control placeholder="qSat [mol/kg]" size="sm" />
+                                            <Form.Control placeholder="qSat [mol/kg]" size="sm" value={this.state.qsat1}  type="number" onChange={(event) => this.handleChangeValue(event, 'qsat1')}/>
                                         </Col>
                                         <Col sm="2">
-                                            <Form.Control placeholder="b0 [m3/mol]" size="sm" />
+                                            <Form.Control placeholder="b0 [m3/mol]" size="sm" value={this.state.b01}  type="number" onChange={(event) => this.handleChangeValue(event, 'b01')}/>
                                         </Col>
                                         <Col sm="2">
-                                            <Form.Control placeholder="delU [kJ/mol]" size="sm" />
+                                            <Form.Control placeholder="delU [kJ/mol]" size="sm" value={this.state.delu1}  type="number" onChange={(event) => this.handleChangeValue(event, 'delu1')}/>
                                         </Col>
                                     </Form.Row>
                                     <Form.Row>
@@ -147,13 +151,13 @@ class NameForm extends React.Component {
                                             </Form.Control>
                                         </Col>
                                         <Col sm="2">
-                                            <Form.Control placeholder="qSat [mol/kg]" size="sm" />
+                                            <Form.Control placeholder="qSat [mol/kg]" size="sm" value={this.state.qsat2} type="number" onChange={(event) => this.handleChangeValue(event, 'qsat2')}/>
                                         </Col>
                                         <Col sm="2">
-                                            <Form.Control placeholder="b0 [m3/mol]" size="sm" />
+                                            <Form.Control placeholder="b0 [m3/mol]" size="sm" value={this.state.b02} type="number" onChange={(event) => this.handleChangeValue(event, 'b02')}/>
                                         </Col>
                                         <Col sm="2">
-                                            <Form.Control placeholder="delU [kJ/mol]" size="sm" />
+                                            <Form.Control placeholder="delU [kJ/mol]" size="sm" value={this.state.delu2}  type="number" onChange={(event) => this.handleChangeValue(event, 'delu2')}/>
                                         </Col>
 
                                     </Form.Row>
