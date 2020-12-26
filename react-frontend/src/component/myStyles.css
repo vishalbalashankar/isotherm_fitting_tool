@@ -63,9 +63,7 @@
   padding: 0.5em;
 }
 .plotstyle {
-  max-width: 350px; 
-  /*width: 400px;*/ 
-  /* min-width: 400px; */
+  max-width: 550px; 
 }
 
 .smaller-input {

@@ -21,13 +21,13 @@ const getData = ( {isotherm, isotherm_fit} ) => ([
 ]);
 const getLayout = ( { adsbname } ) => (
   { 
-    /*width: 450,
+/*    width: 400,
     height: 400, */
     autosize: true,
     title: `${adsbname} Isotherm`,
-/*    config: {
+    config: {
       responsive: true
-    }, */
+    }, 
     xaxis: {
       zeroline: true,
       ticks: 'outside',
@@ -63,6 +63,8 @@ const FullView = ( { isotherm, isotherm_fit, adsbname} ) => (
   <Plot
     data={ getData ( {isotherm, isotherm_fit} ) }
     layout = { getLayout( { adsbname }) }
+    useResizeHandler = {true}
+    style = {{width: "100%", height: "100%"}}
     />
 );
 
@@ -79,7 +81,7 @@ const BlankView = ( { adsbname } ) => (
         },
       ]}
       layout = { getLayout( { adsbname }) }
-      useResizeHandler = {[true]}
+      useResizeHandler = {true}
       style = {{width: "100%", height: "100%"}}
       />
 
