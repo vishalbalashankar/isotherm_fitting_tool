@@ -106,13 +106,13 @@ class NameForm extends React.Component {
                                             </Form.Control>
                                         </Col>
                                         <Col sm="2">
-                                            <Form.Control placeholder="qSat" size="sm" />
+                                            <Form.Control placeholder="qSat [mol/kg]" size="sm" />
                                         </Col>
                                         <Col sm="2">
-                                            <Form.Control placeholder="b0" size="sm" />
+                                            <Form.Control placeholder="b0 [m3/mol]" size="sm" />
                                         </Col>
                                         <Col sm="2">
-                                            <Form.Control placeholder="delH" size="sm" />
+                                            <Form.Control placeholder="delU [kJ/mol]" size="sm" />
                                         </Col>
                                     </Form.Row>
                                     <Form.Row>
@@ -147,13 +147,13 @@ class NameForm extends React.Component {
                                             </Form.Control>
                                         </Col>
                                         <Col sm="2">
-                                            <Form.Control placeholder="qSat" size="sm" />
+                                            <Form.Control placeholder="qSat [mol/kg]" size="sm" />
                                         </Col>
                                         <Col sm="2">
-                                            <Form.Control placeholder="b0" size="sm" />
+                                            <Form.Control placeholder="b0 [m3/mol]" size="sm" />
                                         </Col>
                                         <Col sm="2">
-                                            <Form.Control placeholder="delH" size="sm" />
+                                            <Form.Control placeholder="delU [kJ/mol]" size="sm" />
                                         </Col>
 
                                     </Form.Row>

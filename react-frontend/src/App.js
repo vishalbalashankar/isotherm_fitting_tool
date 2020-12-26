@@ -2,7 +2,6 @@ import React from 'react';
 import './App.css';
 import NameForm from './component/NameForm'
 import IsoTitle from './component/IsoTitle'
-import FittingTitle from './component/FittingTitle'
 import StartPage from './component/StartPage'
 import {BrowserRouter as Router, Switch, Route} from 'react-router-dom';
 
