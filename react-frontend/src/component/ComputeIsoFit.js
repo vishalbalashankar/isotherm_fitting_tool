@@ -11,7 +11,7 @@ const initialState = {
     issubmit: false
 }
 
-class NameForm extends React.Component {
+class ComputeIsoFit extends React.Component {
     constructor(props) {
         super(props)
         this.state = {
@@ -256,9 +256,6 @@ class NameForm extends React.Component {
                 <Row>
                     <Col>
                     </Col>
-                    <Col>
-                    <Button variant="outline-success" size="lg">Adsorbent Screening {'>>'}</Button>{" "}
-                    </Col>
                 </Row>
 
             </Container>
@@ -266,4 +263,4 @@ class NameForm extends React.Component {
     }
 }
 
-export default NameForm
+export default ComputeIsoFit

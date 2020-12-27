@@ -7,10 +7,12 @@ function StartPage() {
   return (
     <div>
         <div class="buttonContainer" >
-            <Link to="/isothermfit">
+            <Link to="/compute_isothermfit">
                 <Button className="btn-size" variant="outline-primary" size="lg">Fit Isotherms</Button>{" "}
             </Link>
+            <Link to="/enter_isothermfit">
                 <Button className="btn-size" variant="outline-primary" size="lg">Enter Isotherm Values</Button> 
+            </Link>
         </div>
     </div>
   );
