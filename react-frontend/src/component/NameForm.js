@@ -242,8 +242,15 @@ class NameForm extends React.Component {
                             <PlotIsotherm adsbname={this.state.adsb2} isotherm={this.state.isodata_2.isotherm} isotherm_fit={this.state.isodata_2.isotherm_fit} />
                         </div>
                     </Col>
-
                 </Row>
+                <Row>
+                    <Col>
+                    </Col>
+                    <Col>
+                    <Button variant="primary" size="lg">Adsorbent Screening</Button>{" "}
+                    </Col>
+                </Row>
+
             </Container>
         )
     }
