@@ -11,6 +11,9 @@ from webargs import fields
 from webargs.flaskparser import use_kwargs, parser
 from get_isotherm import get_isotherm
 
+import sys
+
+
 def allowed_file(filename):
     return "." in filename and filename.rsplit(".", 1)[1].lower() in ALLOWED_EXTENSIONS
 
@@ -29,17 +32,17 @@ class Upload_File(Resource):
         if request.method == "POST":
             # Check if the post request has the file part
             if "files[]" not in request.files:
-                print("No files[] part exist", flush=True)
+                print("No files[] part exist", file=sys.stderr)
                 return redirect(request.url)
             files = request.files.getlist("files[]")
             for file in files:
                 if file.filename == "":
-                    print("No selected file", flush=True)
+                    print("No selected file", file=sys.stderr)
                     return redirect(request.url)
                 if file and allowed_file(file.filename):
                     df = pd.read_csv(file)
-                    print("Processing incoming file:", file.filename, flush=True)
-                    initialGuess=[2.0, 0.01, -1500]
+                    print("Processing incoming file:", file.filename, file=sys.stderr)
+                    initialGuess=[float(request.form.get('qsat_init')), float(request.form.get('b0_init')), float(request.form.get('delu_init'))]
                     isotherm_fit, fitvals = get_isotherm(df,initialGuess)
                     return jsonify({'isotherm': df.to_dict("records"),'isotherm_fit': isotherm_fit, 'popt': fitvals})
             return ""

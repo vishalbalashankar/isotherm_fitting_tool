@@ -1,6 +1,7 @@
 #!/usr/bin/env python
 
 import os
+import sys
 import pandas as pd 
 import numpy as np
 from scipy.optimize import curve_fit
@@ -18,6 +19,7 @@ def get_isotherm(df_adsb,initialGuess):
         b=b0*np.exp(-dUb/(R*Tiso))
         qiso=((qsat*b*c)/(1 + b*c)) 
         return qiso
+    print(initialGuess, file=sys.stderr)
     xData=df_adsb['P'].to_numpy()
     yData=df_adsb['q'].to_numpy()
     zData=df_adsb['T'].to_numpy()

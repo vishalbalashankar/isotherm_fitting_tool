@@ -53,7 +53,14 @@ class NameForm extends React.Component {
             const fd_2 = new FormData();
 
             fd_1.append('files[]', this.state.file_adsb1, this.state.file_adsb1.name)
+            fd_1.append('qsat_init', this.state.qsat1)
+            fd_1.append('b0_init', this.state.b01)
+            fd_1.append('delu_init', this.state.delu1)
             fd_2.append('files[]', this.state.file_adsb2, this.state.file_adsb2.name)
+            fd_2.append('qsat_init', this.state.qsat2)
+            fd_2.append('b0_init', this.state.b02)
+            fd_2.append('delu_init', this.state.delu2)
+
 
             axios.post('http://0.0.0.0:7501/uploadfile', fd_1)
                 .then(res => {
