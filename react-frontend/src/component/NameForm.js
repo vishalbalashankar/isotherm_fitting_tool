@@ -117,13 +117,32 @@ class NameForm extends React.Component {
                                             </Form.Control>
                                         </Col>
                                         <Col sm="2">
-                                            <Form.Control placeholder="qSat [mol/kg]" size="sm" value={this.state.qsat1}  type="number" onChange={(event) => this.handleChangeValue(event, 'qsat1')}/>
+                                            <Form.Control
+                                                placeholder="qSat [mol/kg]"
+                                                size="sm"
+                                                value={this.state.qsat1}
+                                                type="number"
+                                                onChange={(event) => this.handleChangeValue(event, 'qsat1')}
+                                                min="0"
+                                                max="15"
+                                            />
                                         </Col>
                                         <Col sm="2">
-                                            <Form.Control placeholder="b0 [m3/mol]" size="sm" value={this.state.b01}  type="number" onChange={(event) => this.handleChangeValue(event, 'b01')}/>
+                                            <Form.Control
+                                                placeholder="b0 [m3/mol]"
+                                                size="sm" value={this.state.b01}
+                                                type="number"
+                                                onChange={(event) => this.handleChangeValue(event, 'b01')}
+                                            />
                                         </Col>
                                         <Col sm="2">
-                                            <Form.Control placeholder="delU [kJ/mol]" size="sm" value={this.state.delu1}  type="number" onChange={(event) => this.handleChangeValue(event, 'delu1')}/>
+                                            <Form.Control
+                                                placeholder="delU [kJ/mol]"
+                                                size="sm"
+                                                value={this.state.delu1}
+                                                type="number"
+                                                onChange={(event) => this.handleChangeValue(event, 'delu1')}
+                                            />
                                         </Col>
                                     </Form.Row>
                                     <Form.Row>
@@ -137,10 +156,12 @@ class NameForm extends React.Component {
                                                 name="file"
                                                 accept=".xlsx,.csv"
                                                 onChange={(event) => this.handleFile(event, 'file_adsb1')}
+                                                min="-1"
+                                                max="-75"
                                             />
                                         </Col>
                                     </Form.Row>
-                                    <Form.Row  className="item_style">
+                                    <Form.Row className="item_style">
                                         <Col sm="2">
                                             <Form.Label>Adsorbate 2: </Form.Label>
                                         </Col>
@@ -158,16 +179,36 @@ class NameForm extends React.Component {
                                             </Form.Control>
                                         </Col>
                                         <Col sm="2">
-                                            <Form.Control placeholder="qSat [mol/kg]" size="sm" value={this.state.qsat2} type="number" onChange={(event) => this.handleChangeValue(event, 'qsat2')}/>
+                                            <Form.Control
+                                                placeholder="qSat [mol/kg]"
+                                                size="sm"
+                                                value={this.state.qsat2}
+                                                type="number"
+                                                onChange={(event) => this.handleChangeValue(event, 'qsat2')}
+                                                min="0"
+                                                max="15"
+                                            />
                                         </Col>
                                         <Col sm="2">
-                                            <Form.Control placeholder="b0 [m3/mol]" size="sm" value={this.state.b02} type="number" onChange={(event) => this.handleChangeValue(event, 'b02')}/>
+                                            <Form.Control
+                                                placeholder="b0 [m3/mol]"
+                                                size="sm"
+                                                value={this.state.b02}
+                                                type="number"
+                                                onChange={(event) => this.handleChangeValue(event, 'b02')}
+                                            />
                                         </Col>
                                         <Col sm="2">
-                                            <Form.Control placeholder="delU [kJ/mol]" size="sm" value={this.state.delu2}  type="number" onChange={(event) => this.handleChangeValue(event, 'delu2')}/>
+                                            <Form.Control
+                                                placeholder="delU [kJ/mol]"
+                                                size="sm"
+                                                value={this.state.delu2}
+                                                type="number"
+                                                onChange={(event) => this.handleChangeValue(event, 'delu2')}
+                                            />
                                         </Col>
-
                                     </Form.Row>
+
                                     <Form.Row>
                                         <Col sm="2">
                                         </Col>
