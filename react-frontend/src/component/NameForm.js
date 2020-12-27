@@ -116,6 +116,25 @@ class NameForm extends React.Component {
                                                 <option value="ar">Argon</option>
                                             </Form.Control>
                                         </Col>
+                                        <Col>
+                                        <Form.File
+                                                className="position-relative"
+                                                required
+                                                ref="file_1"
+                                                name="file"
+                                                accept=".xlsx,.csv"
+                                                onChange={(event) => this.handleFile(event, 'file_adsb1')}
+                                                min="-1"
+                                                max="-75"
+                                            />
+                                        </Col>
+                                    </Form.Row>
+                                    <Form.Row>
+                                        <Col sm="2">
+                                        </Col>
+                                        <Col sm="3">
+                                           Initial Guess (optional) 
+                                        </Col>
                                         <Col sm="2">
                                             <Form.Control
                                                 placeholder="qSat [mol/kg]"
@@ -145,22 +164,6 @@ class NameForm extends React.Component {
                                             />
                                         </Col>
                                     </Form.Row>
-                                    <Form.Row>
-                                        <Col sm="2">
-                                        </Col>
-                                        <Col sm="3">
-                                            <Form.File
-                                                className="position-relative"
-                                                required
-                                                ref="file_1"
-                                                name="file"
-                                                accept=".xlsx,.csv"
-                                                onChange={(event) => this.handleFile(event, 'file_adsb1')}
-                                                min="-1"
-                                                max="-75"
-                                            />
-                                        </Col>
-                                    </Form.Row>
                                     <Form.Row className="item_style">
                                         <Col sm="2">
                                             <Form.Label>Adsorbate 2: </Form.Label>
@@ -178,6 +181,25 @@ class NameForm extends React.Component {
                                                 <option value="ar">Argon</option>
                                             </Form.Control>
                                         </Col>
+                                        <Col sm="3">
+                                            <Form.File
+                                                className="position-relative"
+                                                required
+                                                name="file"
+                                                ref="file_2"
+                                                accept=".xlsx,.csv"
+                                                onChange={(event) => this.handleFile(event, 'file_adsb2')}
+                                            />
+                                        </Col>
+                                    </Form.Row>
+
+                                    <Form.Row>
+                                        <Col sm="2">
+                                        </Col>
+                                        <Col sm="3">
+                                         Initial guess (optional)  
+                                        </Col>
+
                                         <Col sm="2">
                                             <Form.Control
                                                 placeholder="qSat [mol/kg]"
@@ -207,20 +229,8 @@ class NameForm extends React.Component {
                                                 onChange={(event) => this.handleChangeValue(event, 'delu2')}
                                             />
                                         </Col>
-                                    </Form.Row>
-
-                                    <Form.Row>
-                                        <Col sm="2">
-                                        </Col>
-                                        <Col sm="3">
-                                            <Form.File
-                                                className="position-relative"
-                                                required
-                                                name="file"
-                                                ref="file_2"
-                                                accept=".xlsx,.csv"
-                                                onChange={(event) => this.handleFile(event, 'file_adsb2')}
-                                            />
+                                        <Col>
+                                        <Button variant="link">Download the template for uploading files</Button>
                                         </Col>
                                     </Form.Row>
                                     <Form.Row className="item_style">
@@ -247,7 +257,7 @@ class NameForm extends React.Component {
                     <Col>
                     </Col>
                     <Col>
-                    <Button variant="primary" size="lg">Adsorbent Screening</Button>{" "}
+                    <Button variant="outline-success" size="lg">Adsorbent Screening {'>>'}</Button>{" "}
                     </Col>
                 </Row>
 

@@ -8,9 +8,9 @@ function StartPage() {
     <div>
         <div class="buttonContainer" >
             <Link to="/isothermfit">
-                <Button className="btn-size" variant="primary" size="lg">Fit Isotherms</Button>{" "}
+                <Button className="btn-size" variant="outline-primary" size="lg">Fit Isotherms</Button>{" "}
             </Link>
-                <Button className="btn-size" variant="primary" size="lg">Enter Isotherm Values</Button> 
+                <Button className="btn-size" variant="outline-primary" size="lg">Enter Isotherm Values</Button> 
         </div>
     </div>
   );
