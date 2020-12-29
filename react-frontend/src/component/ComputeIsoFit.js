@@ -69,7 +69,7 @@ class ComputeIsoFit extends React.Component {
             delu1_init_error = "Value should be between 0 and -50"
         }
         if (this.state.delu1_init < -50) {
-            delu1_init_error = "Value should be between -1 and -50"
+            delu1_init_error = "Value should be between 0 and -50"
         }
 
         if (this.state.qsat2_init > 15) {
@@ -86,10 +86,10 @@ class ComputeIsoFit extends React.Component {
         }
 
         if (this.state.delu2_init > 0) {
-            delu2_init_error = "Value should be between -1 and -50"
+            delu2_init_error = "Value should be between 0 and -50"
         }
         if (this.state.delu2_init < -50) {
-            delu2_init_error = "Value should be between -1 and -50"
+            delu2_init_error = "Value should be between 0 and -50"
         }
 
         if (qsat1_init_error || b01_init_error || delu1_init_error || qsat2_init_error || b02_init_error || delu2_init_error) {
@@ -148,14 +148,14 @@ class ComputeIsoFit extends React.Component {
     }
     render() {
         return (
-            <Container fluid="xl">
+            <Container fluid="xl" className="container_form">
                 <Row>
                     <Col>
                         <div className="item1style">
                             <Form onSubmit={this.handleSubmit}>
                                 <Form.Group>
                                     <Form.Row className="item_style">
-                                        <Col sm="2">
+                                        <Col sm="2" className="adsfont_style">
                                             <Form.Label><b>Adsorbate 1: </b></Form.Label>
                                         </Col>
                                         <Col sm="3">
@@ -226,7 +226,7 @@ class ComputeIsoFit extends React.Component {
                                         </Col>
                                     </Form.Row>
                                     <Form.Row className="item_style">
-                                        <Col sm="2">
+                                        <Col sm="2" className="adsfont_style">
                                             <Form.Label><b>Adsorbate 2: </b></Form.Label>
                                         </Col>
                                         <Col sm="3">
@@ -299,10 +299,10 @@ class ComputeIsoFit extends React.Component {
                                     </Form.Row>
                                     <Form.Row >
                                         <Col sm="2">
-                                        <Button type='submit'>Submit</Button>
+                                        
                                         </Col>
                                         <Col sm="3">
-                                            <Button variant="link">Download the template</Button>
+                                           <Button type='submit' size="lg">Compute Fit</Button>
                                         </Col>
                                         <Col sm="2">
                                             <SslEqn />
