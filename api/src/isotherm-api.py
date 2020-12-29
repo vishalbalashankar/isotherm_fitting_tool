@@ -42,7 +42,19 @@ class Upload_File(Resource):
                 if file and allowed_file(file.filename):
                     df = pd.read_csv(file)
                     print("Processing incoming file:", file.filename, file=sys.stderr)
-                    initialGuess=[float(request.form.get('qsat_init')), float(request.form.get('b0_init')), float(request.form.get('delu_init'))]
+                    if request.form.get('qsat_init') == "":
+                        qsat_init = 4
+                    else:
+                        qsat_init = float(request.form.get('qsat_init'))
+                    if request.form.get('b0_init') == "":
+                        b0_init = 0.1
+                    else:
+                        b0_init = float(request.form.get('b0_init'))
+                    if request.form.get('delu_init') == "":
+                        delu_init = -10
+                    else:
+                        delu_init = float(request.form.get('delu_init'))
+                    initialGuess=[qsat_init, b0_init, delu_init]
                     isotherm_fit, fitvals = get_isotherm(df,initialGuess)
                     return jsonify({'isotherm': df.to_dict("records"),'isotherm_fit': isotherm_fit, 'popt': fitvals})
             return ""

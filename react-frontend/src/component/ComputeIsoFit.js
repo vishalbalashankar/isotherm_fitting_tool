@@ -65,8 +65,8 @@ class ComputeIsoFit extends React.Component {
         if (this.state.b01_init < 0) {
             b01_init_error = "Value should be between 0 and 1"
         }
-        if (this.state.delu1_init > -1) {
-            delu1_init_error = "Value should be between -1 and -50"
+        if (this.state.delu1_init > 0) {
+            delu1_init_error = "Value should be between 0 and -50"
         }
         if (this.state.delu1_init < -50) {
             delu1_init_error = "Value should be between -1 and -50"
@@ -85,7 +85,7 @@ class ComputeIsoFit extends React.Component {
             b02_init_error = "Value should be between 0 and 1"
         }
 
-        if (this.state.delu2_init > -1) {
+        if (this.state.delu2_init > 0) {
             delu2_init_error = "Value should be between -1 and -50"
         }
         if (this.state.delu2_init < -50) {
@@ -156,7 +156,7 @@ class ComputeIsoFit extends React.Component {
                                 <Form.Group>
                                     <Form.Row className="item_style">
                                         <Col sm="2">
-                                            <Form.Label>Adsorbate 1: </Form.Label>
+                                            <Form.Label><b>Adsorbate 1: </b></Form.Label>
                                         </Col>
                                         <Col sm="3">
                                             <Form.Control
@@ -182,7 +182,7 @@ class ComputeIsoFit extends React.Component {
                                             />
                                         </Col>
                                     </Form.Row>
-                                    <Form.Row>
+                                    <Form.Row className="item_style">
                                         <Col sm="2">
                                         </Col>
                                         <Col sm="3">
@@ -227,7 +227,7 @@ class ComputeIsoFit extends React.Component {
                                     </Form.Row>
                                     <Form.Row className="item_style">
                                         <Col sm="2">
-                                            <Form.Label>Adsorbate 2: </Form.Label>
+                                            <Form.Label><b>Adsorbate 2: </b></Form.Label>
                                         </Col>
                                         <Col sm="3">
                                             <Form.Control
@@ -253,14 +253,12 @@ class ComputeIsoFit extends React.Component {
                                             />
                                         </Col>
                                     </Form.Row>
-
-                                    <Form.Row>
+                                    <Form.Row className="item_style">
                                         <Col sm="2">
                                         </Col>
                                         <Col sm="3">
                                             Initial guess (optional)
                                         </Col>
-
                                         <Col sm="2">
                                             <Form.Control
                                                 placeholder="qsb [mol/kg]"
@@ -298,9 +296,8 @@ class ComputeIsoFit extends React.Component {
                                                 {this.state.delu2_init_error}
                                             </div>
                                         </Col>
-                                       
                                     </Form.Row>
-                                    <Form.Row>
+                                    <Form.Row >
                                         <Col sm="2">
                                         <Button type='submit'>Submit</Button>
                                         </Col>
