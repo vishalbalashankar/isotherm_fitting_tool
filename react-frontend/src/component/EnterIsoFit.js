@@ -111,15 +111,15 @@ class EnterIsoFit extends React.Component {
     }
     render() {
         return (
-            <Container fluid="xl">
+            <Container fluid="xl" className="container_form">
                 <Row>
                     <Col>
                         <div className="item1style">
                             <Form onSubmit={this.handleSubmit}>
                                 <Form.Group>
                                     <Form.Row className="item_style">
-                                        <Col sm="2">
-                                            <Form.Label>Adsorbate 1: </Form.Label>
+                                        <Col sm="2" className="adsfont_style">
+                                            <Form.Label> <b>Adsorbate 1:</b></Form.Label>
                                         </Col>
                                         <Col sm="3">
                                             <Form.Control
@@ -138,11 +138,11 @@ class EnterIsoFit extends React.Component {
 
                                         </Col>
                                     </Form.Row>
-                                    <Form.Row>
+                                    <Form.Row className="item_style">
                                         <Col sm="2">
                                         </Col>
                                         <Col sm="3">
-                                            Fit Parameters
+                                            SSL Fit Parameters
                                         </Col>
                                         <Col sm="2">
                                             <Form.Control
@@ -182,8 +182,8 @@ class EnterIsoFit extends React.Component {
                                         </Col>
                                     </Form.Row>
                                     <Form.Row className="item_style">
-                                        <Col sm="2">
-                                            <Form.Label>Adsorbate 2: </Form.Label>
+                                        <Col sm="2" className="adsfont_style">
+                                            <Form.Label><b>Adsorbate 2:</b></Form.Label>
                                         </Col>
                                         <Col sm="3">
                                             <Form.Control
@@ -201,11 +201,11 @@ class EnterIsoFit extends React.Component {
                                         <Col sm="3">
                                         </Col>
                                     </Form.Row>
-                                    <Form.Row>
+                                    <Form.Row className="item_style">
                                         <Col sm="2">
                                         </Col>
                                         <Col sm="3">
-                                            Fit Parameters
+                                            SSL Fit Parameters
                                         </Col>
 
                                         <Col sm="2">
@@ -247,19 +247,18 @@ class EnterIsoFit extends React.Component {
                                         </Col>
 
                                     </Form.Row>
-                                    <Form.Row>
-                                        <Col sm="3">
-                                            <Button type='submit'>Submit</Button>
+                                    <Form.Row >
+                                        <Col sm="2">
+                                        
                                         </Col>
                                         <Col sm="3">
+                                           <Button type='submit' size="lg">Plot Isotherm</Button>
                                         </Col>
                                         <Col sm="2">
                                             <SslEqn />
                                         </Col>
                                         <Col sm="2">
                                             <SslEqnb />
-                                        </Col>
-                                        <Col sm="2">
                                         </Col>
                                     </Form.Row>
                                 </Form.Group>
