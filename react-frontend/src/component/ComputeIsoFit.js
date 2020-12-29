@@ -7,26 +7,22 @@ import PlotIsotherm from './PlotIsotherm'
 
 const initialState = {
     adsb1: 'co2',
+    isodata_1: "",
+    qsat1_init: "",
+    b01_init: "",
+    delu1_init: "",
     adsb2: 'n2',
+    isodata_2: "",
+    qsat2_init: "",
+    b02_init: "",
+    delu2_init: "",
     issubmit: false
 }
 
 class ComputeIsoFit extends React.Component {
     constructor(props) {
         super(props)
-        this.state = {
-            adsb1: 'co2',
-            isodata_1: "",
-            qsat1: "",
-            b01: "",
-            delu1: "",
-            adsb2: 'n2',
-            isodata_2: "",
-            qsat2: "",
-            b02: "",
-            delu2: "",
-            issubmit: false
-        };
+        this.state = initialState;
         this.handleSubmit = this.handleSubmit.bind(this);
     }
 
@@ -53,13 +49,13 @@ class ComputeIsoFit extends React.Component {
             const fd_2 = new FormData();
 
             fd_1.append('files[]', this.state.file_adsb1, this.state.file_adsb1.name)
-            fd_1.append('qsat_init', this.state.qsat1)
-            fd_1.append('b0_init', this.state.b01)
-            fd_1.append('delu_init', this.state.delu1)
+            fd_1.append('qsat_init', this.state.qsat1_init)
+            fd_1.append('b0_init', this.state.b01_init)
+            fd_1.append('delu_init', this.state.delu1_init)
             fd_2.append('files[]', this.state.file_adsb2, this.state.file_adsb2.name)
-            fd_2.append('qsat_init', this.state.qsat2)
-            fd_2.append('b0_init', this.state.b02)
-            fd_2.append('delu_init', this.state.delu2)
+            fd_2.append('qsat_init', this.state.qsat2_init)
+            fd_2.append('b0_init', this.state.b02_init)
+            fd_2.append('delu_init', this.state.delu2_init)
 
 
             axios.post('http://0.0.0.0:7501/uploadfile', fd_1)
@@ -117,7 +113,7 @@ class ComputeIsoFit extends React.Component {
                                             </Form.Control>
                                         </Col>
                                         <Col>
-                                        <Form.File
+                                            <Form.File
                                                 className="position-relative"
                                                 required
                                                 ref="file_1"
@@ -133,15 +129,15 @@ class ComputeIsoFit extends React.Component {
                                         <Col sm="2">
                                         </Col>
                                         <Col sm="3">
-                                           Initial Guess (optional) 
+                                            Initial Guess (optional)
                                         </Col>
                                         <Col sm="2">
                                             <Form.Control
                                                 placeholder="qSat [mol/kg]"
                                                 size="sm"
-                                                value={this.state.qsat1}
+                                                value={this.state.qsat1_init}
                                                 type="number"
-                                                onChange={(event) => this.handleChangeValue(event, 'qsat1')}
+                                                onChange={(event) => this.handleChangeValue(event, 'qsat1_init')}
                                                 min="0"
                                                 max="15"
                                             />
@@ -151,16 +147,16 @@ class ComputeIsoFit extends React.Component {
                                                 placeholder="b0 [m3/mol]"
                                                 size="sm" value={this.state.b01}
                                                 type="number"
-                                                onChange={(event) => this.handleChangeValue(event, 'b01')}
+                                                onChange={(event) => this.handleChangeValue(event, 'b01_init')}
                                             />
                                         </Col>
                                         <Col sm="2">
                                             <Form.Control
                                                 placeholder="delU [kJ/mol]"
                                                 size="sm"
-                                                value={this.state.delu1}
+                                                value={this.state.delu1_init}
                                                 type="number"
-                                                onChange={(event) => this.handleChangeValue(event, 'delu1')}
+                                                onChange={(event) => this.handleChangeValue(event, 'delu1_init')}
                                             />
                                         </Col>
                                     </Form.Row>
@@ -197,16 +193,16 @@ class ComputeIsoFit extends React.Component {
                                         <Col sm="2">
                                         </Col>
                                         <Col sm="3">
-                                         Initial guess (optional)  
+                                            Initial guess (optional)
                                         </Col>
 
                                         <Col sm="2">
                                             <Form.Control
                                                 placeholder="qSat [mol/kg]"
                                                 size="sm"
-                                                value={this.state.qsat2}
+                                                value={this.state.qsat2_init}
                                                 type="number"
-                                                onChange={(event) => this.handleChangeValue(event, 'qsat2')}
+                                                onChange={(event) => this.handleChangeValue(event, 'qsat2_init')}
                                                 min="0"
                                                 max="15"
                                             />
@@ -215,22 +211,22 @@ class ComputeIsoFit extends React.Component {
                                             <Form.Control
                                                 placeholder="b0 [m3/mol]"
                                                 size="sm"
-                                                value={this.state.b02}
+                                                value={this.state.b02_init}
                                                 type="number"
-                                                onChange={(event) => this.handleChangeValue(event, 'b02')}
+                                                onChange={(event) => this.handleChangeValue(event, 'b02_init')}
                                             />
                                         </Col>
                                         <Col sm="2">
                                             <Form.Control
                                                 placeholder="delU [kJ/mol]"
                                                 size="sm"
-                                                value={this.state.delu2}
+                                                value={this.state.delu2_init}
                                                 type="number"
-                                                onChange={(event) => this.handleChangeValue(event, 'delu2')}
+                                                onChange={(event) => this.handleChangeValue(event, 'delu2_init')}
                                             />
                                         </Col>
                                         <Col>
-                                        <Button variant="link">Download the template for uploading files</Button>
+                                            <Button variant="link">Download the template for uploading files</Button>
                                         </Col>
                                     </Form.Row>
                                     <Form.Row className="item_style">
