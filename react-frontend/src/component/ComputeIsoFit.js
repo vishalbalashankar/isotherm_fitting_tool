@@ -9,13 +9,19 @@ const initialState = {
     adsb1: 'co2',
     isodata_1: "",
     qsat1_init: "",
+    qsat1_init_error: "",
     b01_init: "",
+    b01_init_error: "",
     delu1_init: "",
+    delu1_init_error: "",
     adsb2: 'n2',
     isodata_2: "",
     qsat2_init: "",
+    qsat2_init_error: "",
     b02_init: "",
+    b02_init_error: "",
     delu2_init: "",
+    delu2_init_error: "",
     issubmit: false
 }
 
@@ -38,6 +44,57 @@ class ComputeIsoFit extends React.Component {
     }
 
     validate = () => {
+        let qsat1_init_error = "";
+        let b01_init_error = "";
+        let delu1_init_error = "";
+        let qsat2_init_error = "";
+        let b02_init_error = "";
+        let delu2_init_error = "";
+
+        if (this.state.qsat1_init > 15) {
+            qsat1_init_error = "Value should be between 0 and 15"
+        }
+        if (this.state.qsat1_init < 0) {
+            qsat1_init_error = "Value should be between 0 and 15"
+        }
+        if (this.state.b01_init > 1) {
+            b01_init_error = "Value should be between 0 and 1"
+        }
+        if (this.state.b01_init < 0) {
+            b01_init_error = "Value should be between 0 and 1"
+        }
+        if (this.state.delu1_init > -1) {
+            delu1_init_error = "Value should be between -1 and -50"
+        }
+        if (this.state.delu1_init < -50) {
+            delu1_init_error = "Value should be between -1 and -50"
+        }
+
+        if (this.state.qsat2_init > 15) {
+            qsat2_init_error = "Value should be between 0 and 15"
+        }
+        if (this.state.qsat2_init < 0) {
+            qsat2_init_error = "Value should be between 0 and 15"
+        }
+        if (this.state.b02_init > 1) {
+            b02_init_error = "Value should be between 0 and 1"
+        }
+        if (this.state.b02_init < 0) {
+            b02_init_error = "Value should be between 0 and 1"
+        }
+
+        if (this.state.delu2_init > -1) {
+            delu2_init_error = "Value should be between -1 and -50"
+        }
+        if (this.state.delu2_init < -50) {
+            delu2_init_error = "Value should be between -1 and -50"
+        }
+
+        if (qsat1_init_error || b01_init_error || delu1_init_error || qsat2_init_error || b02_init_error || delu2_init_error) {
+            this.setState({ qsat1_init_error, b01_init_error, delu1_init_error, qsat2_init_error, b02_init_error, delu2_init_error });
+            return false;
+        }
+
         return true;
     }
 
@@ -120,8 +177,6 @@ class ComputeIsoFit extends React.Component {
                                                 name="file"
                                                 accept=".xlsx,.csv"
                                                 onChange={(event) => this.handleFile(event, 'file_adsb1')}
-                                                min="-1"
-                                                max="-75"
                                             />
                                         </Col>
                                     </Form.Row>
@@ -138,17 +193,22 @@ class ComputeIsoFit extends React.Component {
                                                 value={this.state.qsat1_init}
                                                 type="number"
                                                 onChange={(event) => this.handleChangeValue(event, 'qsat1_init')}
-                                                min="0"
-                                                max="15"
+
                                             />
+                                            <div style={{ fontSize: 12, color: "red" }}>
+                                                {this.state.qsat1_init_error}
+                                            </div>
                                         </Col>
                                         <Col sm="2">
                                             <Form.Control
                                                 placeholder="b0 [m3/mol]"
-                                                size="sm" value={this.state.b01}
+                                                size="sm" value={this.state.b01_init}
                                                 type="number"
                                                 onChange={(event) => this.handleChangeValue(event, 'b01_init')}
                                             />
+                                            <div style={{ fontSize: 12, color: "red" }}>
+                                                {this.state.b01_init_error}
+                                            </div>
                                         </Col>
                                         <Col sm="2">
                                             <Form.Control
@@ -158,6 +218,9 @@ class ComputeIsoFit extends React.Component {
                                                 type="number"
                                                 onChange={(event) => this.handleChangeValue(event, 'delu1_init')}
                                             />
+                                            <div style={{ fontSize: 12, color: "red" }}>
+                                                {this.state.delu1_init_error}
+                                            </div>
                                         </Col>
                                     </Form.Row>
                                     <Form.Row className="item_style">
@@ -203,9 +266,11 @@ class ComputeIsoFit extends React.Component {
                                                 value={this.state.qsat2_init}
                                                 type="number"
                                                 onChange={(event) => this.handleChangeValue(event, 'qsat2_init')}
-                                                min="0"
-                                                max="15"
+
                                             />
+                                            <div style={{ fontSize: 12, color: "red" }}>
+                                                {this.state.qsat2_init_error}
+                                            </div>
                                         </Col>
                                         <Col sm="2">
                                             <Form.Control
@@ -215,6 +280,9 @@ class ComputeIsoFit extends React.Component {
                                                 type="number"
                                                 onChange={(event) => this.handleChangeValue(event, 'b02_init')}
                                             />
+                                            <div style={{ fontSize: 12, color: "red" }}>
+                                                {this.state.b02_init_error}
+                                            </div>
                                         </Col>
                                         <Col sm="2">
                                             <Form.Control
@@ -224,6 +292,9 @@ class ComputeIsoFit extends React.Component {
                                                 type="number"
                                                 onChange={(event) => this.handleChangeValue(event, 'delu2_init')}
                                             />
+                                            <div style={{ fontSize: 12, color: "red" }}>
+                                                {this.state.delu2_init_error}
+                                            </div>
                                         </Col>
                                         <Col>
                                             <Button variant="link">Download the template for uploading files</Button>
