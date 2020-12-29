@@ -4,6 +4,7 @@ import { Form, Container, Row, Col, Button } from 'react-bootstrap'
 import './myStyles.css'
 import axios from 'axios'
 import PlotIsotherm from './PlotIsotherm'
+import SslEqn from './SslEqn'
 
 const initialState = {
     adsb1: 'co2',
@@ -296,12 +297,18 @@ class ComputeIsoFit extends React.Component {
                                                 {this.state.delu2_init_error}
                                             </div>
                                         </Col>
-                                        <Col>
-                                            <Button variant="link">Download the template for uploading files</Button>
-                                        </Col>
+                                       
                                     </Form.Row>
                                     <Form.Row className="item_style">
+                                        <Col sm="2">
                                         <Button type='submit'>Submit</Button>
+                                        </Col>
+                                        <Col sm="4">
+                                            <Button variant="link">Download the template for uploading files</Button>
+                                        </Col>
+                                        <Col sm="3">
+                                            <SslEqn />
+                                        </Col>
                                     </Form.Row>
                                 </Form.Group>
                             </Form>
