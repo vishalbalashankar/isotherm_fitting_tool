@@ -5,6 +5,7 @@ import './myStyles.css'
 import axios from 'axios'
 import PlotIsotherm from './PlotIsotherm'
 import SslEqn from './SslEqn'
+import SslEqnb from './SslEqnb'
 
 const initialState = {
     adsb1: 'co2',
@@ -189,7 +190,7 @@ class ComputeIsoFit extends React.Component {
                                         </Col>
                                         <Col sm="2">
                                             <Form.Control
-                                                placeholder="qSat [mol/kg]"
+                                                placeholder= "qsb [mol/kg]"
                                                 size="sm"
                                                 value={this.state.qsat1_init}
                                                 type="number"
@@ -262,7 +263,7 @@ class ComputeIsoFit extends React.Component {
 
                                         <Col sm="2">
                                             <Form.Control
-                                                placeholder="qSat [mol/kg]"
+                                                placeholder="qsb [mol/kg]"
                                                 size="sm"
                                                 value={this.state.qsat2_init}
                                                 type="number"
@@ -299,15 +300,18 @@ class ComputeIsoFit extends React.Component {
                                         </Col>
                                        
                                     </Form.Row>
-                                    <Form.Row className="item_style">
+                                    <Form.Row>
                                         <Col sm="2">
                                         <Button type='submit'>Submit</Button>
                                         </Col>
-                                        <Col sm="4">
-                                            <Button variant="link">Download the template for uploading files</Button>
-                                        </Col>
                                         <Col sm="3">
+                                            <Button variant="link">Download the template</Button>
+                                        </Col>
+                                        <Col sm="2">
                                             <SslEqn />
+                                        </Col>
+                                        <Col sm="2">
+                                            <SslEqnb />
                                         </Col>
                                     </Form.Row>
                                 </Form.Group>

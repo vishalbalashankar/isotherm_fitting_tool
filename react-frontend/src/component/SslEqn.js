@@ -5,7 +5,9 @@ import { MathComponent } from 'mathjax-react'
 class SslEqn extends React.Component {
   render () {
     return (
-      <MathComponent tex={String.raw`\int_0^1 x^2\ dx`} />
+    <div>
+      <MathComponent tex={String.raw`q_{i}^{*}= \frac{q_{\rm{sb}, i} b_i C_i}{1+b_i  C_i}`} /> 
+    </div>
     )
   }
 }
