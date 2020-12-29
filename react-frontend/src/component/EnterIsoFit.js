@@ -4,29 +4,31 @@ import { Form, Container, Row, Col, Button } from 'react-bootstrap'
 import './myStyles.css'
 import axios from 'axios'
 import PlotIsotherm from './PlotIsotherm'
+import SslEqn from './SslEqn'
+import SslEqnb from './SslEqnb'
 
 const initialState = {
     adsb1: 'co2',
+    qsat1: "",
+    qsat1_error: "",
+    b01: "",
+    b01_error: "",
+    delu1: "",
+    delu1_error: "",
     adsb2: 'n2',
+    qsat2: "",
+    qsat2_error: "",
+    b02: "",
+    b02_error: "",
+    delu2: "",
+    delu2_error: "",
     issubmit: false
 }
 
-class EnterFitIso extends React.Component {
+class EnterIsoFit extends React.Component {
     constructor(props) {
         super(props)
-        this.state = {
-            adsb1: 'co2',
-            isodata_1: "",
-            qsat1: "",
-            b01: "",
-            delu1: "",
-            adsb2: 'n2',
-            isodata_2: "",
-            qsat2: "",
-            b02: "",
-            delu2: "",
-            issubmit: false
-        };
+        this.state = initialState;
         this.handleSubmit = this.handleSubmit.bind(this);
     }
 
@@ -42,6 +44,57 @@ class EnterFitIso extends React.Component {
     }
 
     validate = () => {
+        let qsat1_error = "";
+        let b01_error = "";
+        let delu1_error = "";
+        let qsat2_error = "";
+        let b02_error = "";
+        let delu2_error = "";
+
+        if (this.state.qsat1 > 15) {
+            qsat1_error = "Value should be between 0 and 15"
+        }
+        if (this.state.qsat1 < 0) {
+            qsat1_error = "Value should be between 0 and 15"
+        }
+        if (this.state.b01 > 1) {
+            b01_error = "Value should be between 0 and 1"
+        }
+        if (this.state.b01 < 0) {
+            b01_error = "Value should be between 0 and 1"
+        }
+        if (this.state.delu1 > -1) {
+            delu1_error = "Value should be between -1 and -50"
+        }
+        if (this.state.delu1 < -50) {
+            delu1_error = "Value should be between -1 and -50"
+        }
+
+        if (this.state.qsat2 > 15) {
+            qsat2_error = "Value should be between 0 and 15"
+        }
+        if (this.state.qsat2 < 0) {
+            qsat2_error = "Value should be between 0 and 15"
+        }
+        if (this.state.b02 > 1) {
+            b02_error = "Value should be between 0 and 1"
+        }
+        if (this.state.b02 < 0) {
+            b02_error = "Value should be between 0 and 1"
+        }
+
+        if (this.state.delu2 > -1) {
+            delu2_error = "Value should be between -1 and -50"
+        }
+        if (this.state.delu2 < -50) {
+            delu2_error = "Value should be between -1 and -50"
+        }
+
+        if (qsat1_error || b01_error || delu1_error || qsat2_error || b02_error || delu2_error) {
+            this.setState({ qsat1_error, b01_error, delu1_error, qsat2_error, b02_error, delu2_error });
+            return false;
+        }
+
         return true;
     }
 
@@ -49,42 +102,7 @@ class EnterFitIso extends React.Component {
         event.preventDefault();
         const isValid = this.validate();
         if (isValid) {
-            const fd_1 = new FormData();
-            const fd_2 = new FormData();
-
-            fd_1.append('files[]', this.state.file_adsb1, this.state.file_adsb1.name)
-            fd_1.append('qsat_init', this.state.qsat1)
-            fd_1.append('b0_init', this.state.b01)
-            fd_1.append('delu_init', this.state.delu1)
-            fd_2.append('files[]', this.state.file_adsb2, this.state.file_adsb2.name)
-            fd_2.append('qsat_init', this.state.qsat2)
-            fd_2.append('b0_init', this.state.b02)
-            fd_2.append('delu_init', this.state.delu2)
-
-
-            axios.post('http://0.0.0.0:7501/uploadfile', fd_1)
-                .then(res => {
-                    this.setState({
-                        isodata_1: res.data
-                    });
-                    console.log(res);
-                })
-                .catch(errors => {
-                    console.log(errors)
-                })
-            axios.post('http://0.0.0.0:7501/uploadfile', fd_2)
-                .then(res_2 => {
-                    this.setState({
-                        isodata_2: res_2.data
-                    });
-                    console.log(this.state.isodata_2.popt)
-                })
-                .catch(errors => {
-                    console.log(errors)
-                })
             this.setState(initialState);
-            this.refs.file_1.value = '';
-            this.refs.file_2.value = '';
             alert('A name was submitted: ' + this.state.adsname);
             this.setState({
                 issubmit: true
@@ -116,23 +134,28 @@ class EnterFitIso extends React.Component {
                                                 <option value="ar">Argon</option>
                                             </Form.Control>
                                         </Col>
+                                        <Col>
+
+                                        </Col>
                                     </Form.Row>
                                     <Form.Row>
                                         <Col sm="2">
                                         </Col>
                                         <Col sm="3">
-                                           Fit Parameters SSL: 
+                                            Fit Parameters
                                         </Col>
                                         <Col sm="2">
                                             <Form.Control
-                                                placeholder="qSat [mol/kg]"
+                                                placeholder="qsb [mol/kg]"
                                                 size="sm"
                                                 value={this.state.qsat1}
                                                 type="number"
                                                 onChange={(event) => this.handleChangeValue(event, 'qsat1')}
-                                                min="0"
-                                                max="15"
+
                                             />
+                                            <div style={{ fontSize: 12, color: "red" }}>
+                                                {this.state.qsat1_init_error}
+                                            </div>
                                         </Col>
                                         <Col sm="2">
                                             <Form.Control
@@ -141,6 +164,9 @@ class EnterFitIso extends React.Component {
                                                 type="number"
                                                 onChange={(event) => this.handleChangeValue(event, 'b01')}
                                             />
+                                            <div style={{ fontSize: 12, color: "red" }}>
+                                                {this.state.b01_init_error}
+                                            </div>
                                         </Col>
                                         <Col sm="2">
                                             <Form.Control
@@ -150,6 +176,9 @@ class EnterFitIso extends React.Component {
                                                 type="number"
                                                 onChange={(event) => this.handleChangeValue(event, 'delu1')}
                                             />
+                                            <div style={{ fontSize: 12, color: "red" }}>
+                                                {this.state.delu1_init_error}
+                                            </div>
                                         </Col>
                                     </Form.Row>
                                     <Form.Row className="item_style">
@@ -169,24 +198,28 @@ class EnterFitIso extends React.Component {
                                                 <option value="ar">Argon</option>
                                             </Form.Control>
                                         </Col>
+                                        <Col sm="3">
+                                        </Col>
                                     </Form.Row>
-
                                     <Form.Row>
                                         <Col sm="2">
                                         </Col>
                                         <Col sm="3">
-                                        Fit Parameters SSL:  
+                                            Fit Parameters
                                         </Col>
+
                                         <Col sm="2">
                                             <Form.Control
-                                                placeholder="qSat [mol/kg]"
+                                                placeholder="qsb [mol/kg]"
                                                 size="sm"
                                                 value={this.state.qsat2}
                                                 type="number"
                                                 onChange={(event) => this.handleChangeValue(event, 'qsat2')}
-                                                min="0"
-                                                max="15"
+
                                             />
+                                            <div style={{ fontSize: 12, color: "red" }}>
+                                                {this.state.qsat2_init_error}
+                                            </div>
                                         </Col>
                                         <Col sm="2">
                                             <Form.Control
@@ -196,6 +229,9 @@ class EnterFitIso extends React.Component {
                                                 type="number"
                                                 onChange={(event) => this.handleChangeValue(event, 'b02')}
                                             />
+                                            <div style={{ fontSize: 12, color: "red" }}>
+                                                {this.state.b02_init_error}
+                                            </div>
                                         </Col>
                                         <Col sm="2">
                                             <Form.Control
@@ -205,10 +241,26 @@ class EnterFitIso extends React.Component {
                                                 type="number"
                                                 onChange={(event) => this.handleChangeValue(event, 'delu2')}
                                             />
+                                            <div style={{ fontSize: 12, color: "red" }}>
+                                                {this.state.delu2_init_error}
+                                            </div>
                                         </Col>
+
                                     </Form.Row>
-                                    <Form.Row className="item_style">
-                                        <Button type='submit'>Submit</Button>
+                                    <Form.Row>
+                                        <Col sm="3">
+                                            <Button type='submit'>Submit</Button>
+                                        </Col>
+                                        <Col sm="3">
+                                        </Col>
+                                        <Col sm="2">
+                                            <SslEqn />
+                                        </Col>
+                                        <Col sm="2">
+                                            <SslEqnb />
+                                        </Col>
+                                        <Col sm="2">
+                                        </Col>
                                     </Form.Row>
                                 </Form.Group>
                             </Form>
@@ -218,12 +270,12 @@ class EnterFitIso extends React.Component {
                 <Row>
                     <Col>
                         <div className="plotstyle">
-                            <PlotIsotherm adsbname={this.state.adsb1} isotherm={this.state.isodata_1.isotherm} isotherm_fit={this.state.isodata_1.isotherm_fit} />
+                            <PlotIsotherm adsbname={this.state.adsb1} />
                         </div>
                     </Col>
                     <Col>
                         <div className="plotstyle">
-                            <PlotIsotherm adsbname={this.state.adsb2} isotherm={this.state.isodata_2.isotherm} isotherm_fit={this.state.isodata_2.isotherm_fit} />
+                            <PlotIsotherm adsbname={this.state.adsb2} />
                         </div>
                     </Col>
                 </Row>
@@ -237,4 +289,4 @@ class EnterFitIso extends React.Component {
     }
 }
 
-export default EnterFitIso
+export default EnterIsoFit
