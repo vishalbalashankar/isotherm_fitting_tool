@@ -133,11 +133,11 @@ class ComputeIsoFit extends React.Component {
                     });
                 })
             axios.post('http://0.0.0.0:7501/uploadfile', fd_2)
-                .then(res_2 => {
+                .then(res => {
                     this.setState({
-                        isodata_2: res_2.data
+                        isodata_2: res.data
                     });
-                    console.log(this.state.isodata_2.popt)
+                    console.log(res)
                 })
                 .catch(errors => {
                     console.log(errors)

@@ -6,7 +6,6 @@ import pandas as pd
 import numpy as np
 from scipy.optimize import curve_fit
 
-DESTINATION_FOLDER = "/app/userfile_uploads"
 
 
 def get_isotherm(df_adsb,initialGuess):
@@ -24,13 +23,14 @@ def get_isotherm(df_adsb,initialGuess):
     yData=df_adsb['q'].to_numpy()
     zData=df_adsb['T'].to_numpy()
     popt, pcov = curve_fit(isotherm, (xData,zData), yData, p0 = initialGuess, maxfev=50000)
-    xFit = np.arange(0,1,0.05)
-    zFit = np.empty(3*len(xFit)); zFit.fill(1)
+    xFit = np.arange(0,1.05,0.05)
+    Ttot = len(df_adsb['T'].unique())
+    zFit = np.empty(Ttot*len(xFit)); zFit.fill(1)
     flag = 0
     for Temp in df_adsb['T'].unique():
-        zFit[flag*len(xFit): (flag+1)*len(xFit) ] = Temp
+        zFit[ flag*len(xFit): (flag+1)*len(xFit) ] = Temp
         flag+=1
-    xFit = np.tile(xFit,3)
+    xFit = np.tile(xFit,Ttot)
     X = xFit, zFit
     yFit = isotherm(X,popt[0],popt[1],popt[2])
     print('Curve fit in Progress', flush=True)

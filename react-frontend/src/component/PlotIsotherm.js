@@ -14,7 +14,7 @@ const getData = ( {isotherm, isotherm_fit} ) => ([
     x:  isotherm_fit.map( isotherm_fit => isotherm_fit.Pfit),
     y:  isotherm_fit.map( isotherm_fit => isotherm_fit.qfit),
     type: 'scattergl',
-    mode: 'line',
+    mode: 'markers',
     marker: {color: 'blue'},
     name: "Fit"
   }
