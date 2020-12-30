@@ -29,35 +29,40 @@ class Upload_File(Resource):
         super()
 
     def post(self):
-        if request.method == "POST":
-            # Check if the post request has the file part
-            if "files[]" not in request.files:
-                print("No files[] part exist", file=sys.stderr)
-                return redirect(request.url)
-            files = request.files.getlist("files[]")
-            for file in files:
-                if file.filename == "":
-                    print("No selected file", file=sys.stderr)
+        try:
+            if request.method == "POST":
+                # Check if the post request has the file part
+                if "files[]" not in request.files:
+                    print("No files[] part exist", file=sys.stderr)
                     return redirect(request.url)
-                if file and allowed_file(file.filename):
-                    df = pd.read_csv(file)
-                    print("Processing incoming file:", file.filename, file=sys.stderr)
-                    if request.form.get('qsat_init') == "":
-                        qsat_init = 4
-                    else:
-                        qsat_init = float(request.form.get('qsat_init'))
-                    if request.form.get('b0_init') == "":
-                        b0_init = 0.1
-                    else:
-                        b0_init = float(request.form.get('b0_init'))
-                    if request.form.get('delu_init') == "":
-                        delu_init = -10
-                    else:
-                        delu_init = float(request.form.get('delu_init'))
-                    initialGuess=[qsat_init, b0_init, delu_init]
-                    isotherm_fit, fitvals = get_isotherm(df,initialGuess)
-                    return jsonify({'isotherm': df.to_dict("records"),'isotherm_fit': isotherm_fit, 'popt': fitvals})
-            return ""
+                files = request.files.getlist("files[]")
+                for file in files:
+                    if file.filename == "":
+                        print("No selected file", file=sys.stderr)
+                        return redirect(request.url)
+                    if not allowed_file(file.filename):
+                        raise ValueError("Error!!! File doesn't match the requirements")
+                    if file and allowed_file(file.filename):
+                        df = pd.read_csv(file)
+                        print("Processing incoming file:", file.filename, file=sys.stderr)
+                        if request.form.get('qsat_init') == "":
+                            qsat_init = 4
+                        else:
+                            qsat_init = float(request.form.get('qsat_init'))
+                        if request.form.get('b0_init') == "":
+                            b0_init = 0.1
+                        else:
+                            b0_init = float(request.form.get('b0_init'))
+                        if request.form.get('delu_init') == "":
+                            delu_init = -10
+                        else:
+                            delu_init = float(request.form.get('delu_init'))
+                        initialGuess=[qsat_init, b0_init, delu_init]
+                        isotherm_fit, fitvals = get_isotherm(df,initialGuess)
+                        return jsonify({'isotherm': df.to_dict("records"),'isotherm_fit': isotherm_fit, 'popt': fitvals})
+                return ""
+        except ValueError as e: 
+            return str(e), 400
 
 app = Flask(__name__)
 CORS(app)

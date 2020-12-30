@@ -16,6 +16,7 @@ const initialState = {
     b01_init_error: "",
     delu1_init: "",
     delu1_init_error: "",
+    file1_error: "",
     adsb2: 'N<sub>2</sub>',
     isodata_2: "",
     qsat2_init: "",
@@ -24,6 +25,7 @@ const initialState = {
     b02_init_error: "",
     delu2_init: "",
     delu2_init_error: "",
+    file2_error: "",
     issubmit: false
 }
 
@@ -126,6 +128,9 @@ class ComputeIsoFit extends React.Component {
                 })
                 .catch(errors => {
                     console.log(errors)
+                    this.setState({
+                        file1_error: "The uploaded file doesn't match the requirements. Please try again."
+                    });
                 })
             axios.post('http://0.0.0.0:7501/uploadfile', fd_2)
                 .then(res_2 => {
@@ -136,6 +141,9 @@ class ComputeIsoFit extends React.Component {
                 })
                 .catch(errors => {
                     console.log(errors)
+                    this.setState({
+                        file2_error: "The uploaded file doesn't match the requirements. Please try again."
+                    });
                 })
             this.setState(initialState);
             this.refs.file_1.value = '';
@@ -182,6 +190,9 @@ class ComputeIsoFit extends React.Component {
                                                 accept=".xlsx,.csv"
                                                 onChange={(event) => this.handleFile(event, 'file_adsb1')}
                                             />
+                                            <div style={{ fontSize: 12, color: "red" }}>
+                                                {this.state.file1_error}
+                                            </div>
                                         </Col>
                                     </Form.Row>
                                     <Form.Row className="item_style">
@@ -255,6 +266,9 @@ class ComputeIsoFit extends React.Component {
                                                 accept=".xlsx,.csv"
                                                 onChange={(event) => this.handleFile(event, 'file_adsb2')}
                                             />
+                                            <div style={{ fontSize: 12, color: "red" }}>
+                                                {this.state.file2_error}
+                                            </div>
                                         </Col>
                                     </Form.Row>
                                     <Form.Row className="item_style">
