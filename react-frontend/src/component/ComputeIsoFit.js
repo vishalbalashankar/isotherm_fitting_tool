@@ -8,7 +8,7 @@ import SslEqn from './SslEqn'
 import SslEqnb from './SslEqnb'
 
 const initialState = {
-    adsb1: 'co2',
+    adsb1: 'CO<sub>2</sub>',
     isodata_1: "",
     qsat1_init: "",
     qsat1_init_error: "",
@@ -16,7 +16,7 @@ const initialState = {
     b01_init_error: "",
     delu1_init: "",
     delu1_init_error: "",
-    adsb2: 'n2',
+    adsb2: 'N<sub>2</sub>',
     isodata_2: "",
     qsat2_init: "",
     qsat2_init_error: "",
@@ -164,11 +164,13 @@ class ComputeIsoFit extends React.Component {
                                                 value={this.state.adsb1}
                                                 onChange={(event) => this.handleChangeValue(event, 'adsb1')}
                                             >
-                                                <option value="co2">Carbon dioxide</option>
-                                                <option value="n2">Nitrogen</option>
-                                                <option value="ch4">Methane</option>
-                                                <option value="H2">Hydrogen</option>
-                                                <option value="ar">Argon</option>
+                                                <option value="Ar">Argon</option>
+                                                <option value="CO<sub>2</sub>">Carbon dioxide</option>
+                                                <option value="He">Helium</option>
+                                                <option value="H<sub>2</sub>">Hydrogen</option>
+                                                <option value="CH<sub>4</sub>">Methane</option>
+                                                <option value="N<sub>2</sub>">Nitrogen</option>
+                                                <option value="O<sub>2</sub>">Oxygen</option>
                                             </Form.Control>
                                         </Col>
                                         <Col>
@@ -186,7 +188,7 @@ class ComputeIsoFit extends React.Component {
                                         <Col sm="2">
                                         </Col>
                                         <Col sm="3">
-                                            Initial Guess (optional)
+                                            <b>Initial Guess</b> (optional)
                                         </Col>
                                         <Col sm="2">
                                             <Form.Control
@@ -235,11 +237,13 @@ class ComputeIsoFit extends React.Component {
                                                 value={this.state.adsb2}
                                                 onChange={(event) => this.handleChangeValue(event, 'adsb2')}
                                             >
-                                                <option value="co2">Carbon dioxide</option>
-                                                <option value="n2">Nitrogen</option>
-                                                <option value="ch4">Methane</option>
-                                                <option value="H2">Hydrogen</option>
-                                                <option value="ar">Argon</option>
+                                                <option value="Ar">Argon</option>
+                                                <option value="CO<sub>2</sub>">Carbon dioxide</option>
+                                                <option value="He">Helium</option>
+                                                <option value="H<sub>2</sub>">Hydrogen</option>
+                                                <option value="CH<sub>4</sub>">Methane</option>
+                                                <option value="N<sub>2</sub>">Nitrogen</option>
+                                                <option value="O<sub>2</sub>">Oxygen</option>
                                             </Form.Control>
                                         </Col>
                                         <Col sm="3">
@@ -257,7 +261,7 @@ class ComputeIsoFit extends React.Component {
                                         <Col sm="2">
                                         </Col>
                                         <Col sm="3">
-                                            Initial guess (optional)
+                                            <b>Initial guess</b> (optional)
                                         </Col>
                                         <Col sm="2">
                                             <Form.Control

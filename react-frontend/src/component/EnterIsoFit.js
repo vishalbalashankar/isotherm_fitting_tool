@@ -8,14 +8,14 @@ import SslEqn from './SslEqn'
 import SslEqnb from './SslEqnb'
 
 const initialState = {
-    adsb1: 'co2',
+    adsb1: 'CO<sub>2</sub>',
     qsat1: "",
     qsat1_error: "",
     b01: "",
     b01_error: "",
     delu1: "",
     delu1_error: "",
-    adsb2: 'n2',
+    adsb2: 'N<sub>2</sub>',
     qsat2: "",
     qsat2_error: "",
     b02: "",
@@ -127,11 +127,13 @@ class EnterIsoFit extends React.Component {
                                                 value={this.state.adsb1}
                                                 onChange={(event) => this.handleChangeValue(event, 'adsb1')}
                                             >
-                                                <option value="co2">Carbon dioxide</option>
-                                                <option value="n2">Nitrogen</option>
-                                                <option value="ch4">Methane</option>
-                                                <option value="H2">Hydrogen</option>
-                                                <option value="ar">Argon</option>
+                                                <option value="Ar">Argon</option>
+                                                <option value="CO<sub>2</sub>">Carbon dioxide</option>
+                                                <option value="He">Helium</option>
+                                                <option value="H<sub>2</sub>">Hydrogen</option>
+                                                <option value="CH<sub>4</sub>">Methane</option>
+                                                <option value="N<sub>2</sub>">Nitrogen</option>
+                                                <option value="O<sub>2</sub>">Oxygen</option>
                                             </Form.Control>
                                         </Col>
                                         <Col>
@@ -142,7 +144,7 @@ class EnterIsoFit extends React.Component {
                                         <Col sm="2">
                                         </Col>
                                         <Col sm="3">
-                                            SSL Fit Parameters
+                                            <b>SSL Fit Parameters</b>
                                         </Col>
                                         <Col sm="2">
                                             <Form.Control
@@ -191,11 +193,13 @@ class EnterIsoFit extends React.Component {
                                                 value={this.state.adsb2}
                                                 onChange={(event) => this.handleChangeValue(event, 'adsb2')}
                                             >
-                                                <option value="co2">Carbon dioxide</option>
-                                                <option value="n2">Nitrogen</option>
-                                                <option value="ch4">Methane</option>
-                                                <option value="H2">Hydrogen</option>
-                                                <option value="ar">Argon</option>
+                                                <option value="Ar">Argon</option>
+                                                <option value="CO<sub>2</sub>">Carbon dioxide</option>
+                                                <option value="He">Helium</option>
+                                                <option value="H<sub>2</sub>">Hydrogen</option>
+                                                <option value="CH<sub>4</sub>">Methane</option>
+                                                <option value="N<sub>2</sub>">Nitrogen</option>
+                                                <option value="O<sub>2</sub>">Oxygen</option>
                                             </Form.Control>
                                         </Col>
                                         <Col sm="3">
@@ -205,7 +209,7 @@ class EnterIsoFit extends React.Component {
                                         <Col sm="2">
                                         </Col>
                                         <Col sm="3">
-                                            SSL Fit Parameters
+                                            <b>SSL Fit Parameters</b>
                                         </Col>
 
                                         <Col sm="2">

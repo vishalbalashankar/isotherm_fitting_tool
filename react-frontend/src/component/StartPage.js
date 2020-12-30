@@ -19,12 +19,12 @@ function StartPage() {
       <Row >
         <div className="start-text">
           {count ? (
-            <Typist avgTypingDelay={70} onTypingDone={() => setCount(0)}>
+            <Typist avgTypingDelay={50} onTypingDone={() => setCount(0)}>
               <span> <b>Welcome!!</b> Choose one of the options below to get started</span>
               <Typist.Backspace count={40} delay={800} />
-              <span> option - 1 to 'fit isotherms' first and start the screening process..</span>
-              <Typist.Backspace count={60} delay={1600} />
-              <span> 2 enter 'isotherm values' directly and start the screening process..</span>
+              <span> Option - 1 to compute SSL parameters first and start the screening process..</span>
+              <Typist.Backspace count={67} delay={1600} />
+              <span> 2 to enter SSL parameters directly and start the screening process..</span>
             </Typist>
           ) : (
               ""
@@ -34,12 +34,12 @@ function StartPage() {
       <Row>
         <Col>
           <Link to="/compute_isothermfit">
-            <Button className="btn-size" variant="outline-primary mr-1" size="lg">Fit Isotherms</Button>
+            <Button className="btn-size" variant="outline-primary mr-1" size="lg">Compute SSL Parameters</Button>
           </Link>
         </Col>
         <Col>
           <Link to="/enter_isothermfit">
-            <Button className="btn-size" variant="outline-primary mr-1" size="lg">Enter Isotherm Values</Button>
+            <Button className="btn-size" variant="outline-primary mr-1" size="lg">Enter SSL Parameters</Button>
           </Link>
         </Col>
       </Row>
