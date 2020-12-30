@@ -14,17 +14,3 @@
     background-repeat: no-repeat;
     background-size: cover; } */ 
 
-
-.buttonContainer {
-  height: 100vh; 
-  display: flex;
-  justify-content: center;
-  align-items: center;
-}
-
-.btn-size {
-  height: 75px !important; 
-  width: 300px !important;
-  margin-left:50px;
-  margin-right:50px;
-}

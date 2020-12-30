@@ -16,7 +16,9 @@
     "react-dom": "^16.14.0",
     "react-plotly.js": "^2.5.0",
     "react-router-dom": "^5.2.0",
-    "react-scripts": "^4.0.1"
+    "react-scripts": "^4.0.1",
+    "react-typist": "^2.0.5",
+    "typewriter-effect": "^2.17.0"
   },
   "scripts": {
     "start": "react-scripts start",
