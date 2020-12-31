@@ -148,7 +148,7 @@ class ComputeIsoFit extends React.Component {
             this.setState(initialState);
             this.refs.file_1.value = '';
             this.refs.file_2.value = '';
-            alert('A name was submitted: ' + this.state.adsname);
+            alert('Computing SSL parameters based on the experimental isotherm values..');
             this.setState({
                 issubmit: true
             })
