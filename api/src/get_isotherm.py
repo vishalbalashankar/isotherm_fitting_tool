@@ -6,18 +6,16 @@ import pandas as pd
 import numpy as np
 from scipy.optimize import curve_fit
 
-
+def isotherm(X, qsat, b0, dUb): 
+    Piso, Tiso = X
+    R = 8.314
+    Rg=8.314*10**(-5);                # Gas constant <(m^3 bar)/(K mol)> [for all calculations]
+    c=(Piso)/(Rg*Tiso)
+    b=b0*np.exp(-dUb/(R*Tiso))
+    qiso=((qsat*b*c)/(1 + b*c)) 
+    return qiso
 
 def get_isotherm(df_adsb,initialGuess):
-
-    def isotherm(X, qsat, b0, dUb): 
-        Piso, Tiso = X
-        R = 8.314
-        Rg=8.314*10**(-5);                # Gas constant <(m^3 bar)/(K mol)> [for all calculations]
-        c=(Piso)/(Rg*Tiso)
-        b=b0*np.exp(-dUb/(R*Tiso))
-        qiso=((qsat*b*c)/(1 + b*c)) 
-        return qiso
     print(initialGuess, file=sys.stderr)
     xData=df_adsb['P'].to_numpy()
     yData=df_adsb['q'].to_numpy()

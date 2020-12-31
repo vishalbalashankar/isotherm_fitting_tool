@@ -6,13 +6,13 @@ import os
 from werkzeug.utils import secure_filename
 from flask_cors import CORS
 import pandas as pd
+import numpy as np
 
 from webargs import fields
 from webargs.flaskparser import use_kwargs, parser
-from get_isotherm import get_isotherm
+from get_isotherm import get_isotherm, isotherm
 
 import sys
-
 
 def allowed_file(filename):
     return "." in filename and filename.rsplit(".", 1)[1].lower() in ALLOWED_EXTENSIONS
@@ -64,12 +64,37 @@ class Upload_File(Resource):
         except ValueError as e: 
             return str(e), 400
 
+class EnterParameters(Resource):
+    def __init__(self):
+        self.output_name = "enter_parameters" 
+        super()
+
+    def get(self):
+        print("Running GET Request")
+        args = request.args
+        xFit = np.arange(0,1,0.05)
+        Ttot = 3
+        zFit = np.empty(Ttot*len(xFit)); zFit.fill(1)
+        flag = 0
+        for Temp in ['298.15', '308.15', '318.15']:
+            zFit[ flag*len(xFit): (flag+1)*len(xFit) ] = Temp
+            flag+=1
+        xFit = np.tile(xFit,Ttot)
+        X = xFit, zFit
+        yFit = isotherm(X, float(args['qsat']), float(args['b0']), float(args['delu']))
+        df = pd.DataFrame()
+        df['Pfit'] = xFit
+        df['qfit'] = yFit
+        df['T'] = zFit
+        return jsonify({'isotherm_fit': df.to_dict("records")})
+
 app = Flask(__name__)
 CORS(app)
 api = Api(app)
 
 api.add_resource(Upload_File,"/uploadfile")
 api.add_resource(HelloWorld,"/testing")
+api.add_resource(EnterParameters,"/enter_parameters")
 
 if __name__ == "__main__":
     app.run(host='0.0.0.0', port=7501, debug=True)
