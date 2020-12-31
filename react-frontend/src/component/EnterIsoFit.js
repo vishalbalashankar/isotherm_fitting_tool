@@ -4,6 +4,7 @@ import { Form, Container, Row, Col, Button } from 'react-bootstrap'
 import './myStyles.css'
 import axios from 'axios'
 import PlotIsotherm from './PlotIsotherm'
+import PlotIsotherm_1 from './PlotIsotherm_1'
 import SslEqn from './SslEqn'
 import SslEqnb from './SslEqnb'
 
@@ -15,6 +16,7 @@ const initialState = {
     b01_error: "",
     delu1: "",
     delu1_error: "",
+    isodata_1: "",
     adsb2: 'N<sub>2</sub>',
     qsat2: "",
     qsat2_error: "",
@@ -22,6 +24,7 @@ const initialState = {
     b02_error: "",
     delu2: "",
     delu2_error: "",
+    isodata_2: "",
     issubmit: false
 }
 
@@ -102,11 +105,41 @@ class EnterIsoFit extends React.Component {
         event.preventDefault();
         const isValid = this.validate();
         if (isValid) {
-            this.setState(initialState);
-            alert('A name was submitted: ' + this.state.adsname);
-            this.setState({
-                issubmit: true
+            axios.get('http://0.0.0.0:7501/enter_parameters',{
+                params: {
+                    qsat: this.state.qsat1,
+                    b0: this.state.b01,
+                    delu: this.state.delu1
+                }
             })
+                .then(response => {
+                    console.log(response)
+                    this.setState({
+                        isodata_1: response.data
+                    });
+                })
+                .catch(errors => {
+                    console.log(errors)
+                })
+                axios.get('http://0.0.0.0:7501/enter_parameters',{
+                    params: {
+                        qsat: this.state.qsat2,
+                        b0: this.state.b02,
+                        delu: this.state.delu2
+                    }
+                })
+                    .then(response => {
+                        console.log(response)
+                        this.setState({
+                            isodata_2: response.data
+                        });
+                    })
+                    .catch(errors => {
+                        console.log(errors)
+                    })
+            alert('Plotting isotherms using given SSL parameters...');
+
+
         }
     }
     render() {
@@ -156,7 +189,7 @@ class EnterIsoFit extends React.Component {
 
                                             />
                                             <div style={{ fontSize: 12, color: "red" }}>
-                                                {this.state.qsat1_init_error}
+                                                {this.state.qsat1_error}
                                             </div>
                                         </Col>
                                         <Col sm="2">
@@ -167,7 +200,7 @@ class EnterIsoFit extends React.Component {
                                                 onChange={(event) => this.handleChangeValue(event, 'b01')}
                                             />
                                             <div style={{ fontSize: 12, color: "red" }}>
-                                                {this.state.b01_init_error}
+                                                {this.state.b01_error}
                                             </div>
                                         </Col>
                                         <Col sm="2">
@@ -179,7 +212,7 @@ class EnterIsoFit extends React.Component {
                                                 onChange={(event) => this.handleChangeValue(event, 'delu1')}
                                             />
                                             <div style={{ fontSize: 12, color: "red" }}>
-                                                {this.state.delu1_init_error}
+                                                {this.state.delu1_error}
                                             </div>
                                         </Col>
                                     </Form.Row>
@@ -222,7 +255,7 @@ class EnterIsoFit extends React.Component {
 
                                             />
                                             <div style={{ fontSize: 12, color: "red" }}>
-                                                {this.state.qsat2_init_error}
+                                                {this.state.qsat2_error}
                                             </div>
                                         </Col>
                                         <Col sm="2">
@@ -234,7 +267,7 @@ class EnterIsoFit extends React.Component {
                                                 onChange={(event) => this.handleChangeValue(event, 'b02')}
                                             />
                                             <div style={{ fontSize: 12, color: "red" }}>
-                                                {this.state.b02_init_error}
+                                                {this.state.b02_error}
                                             </div>
                                         </Col>
                                         <Col sm="2">
@@ -246,7 +279,7 @@ class EnterIsoFit extends React.Component {
                                                 onChange={(event) => this.handleChangeValue(event, 'delu2')}
                                             />
                                             <div style={{ fontSize: 12, color: "red" }}>
-                                                {this.state.delu2_init_error}
+                                                {this.state.delu2_error}
                                             </div>
                                         </Col>
 
@@ -273,12 +306,12 @@ class EnterIsoFit extends React.Component {
                 <Row>
                     <Col>
                         <div className="plotstyle">
-                            <PlotIsotherm adsbname={this.state.adsb1} />
+                            <PlotIsotherm_1 adsbname={this.state.adsb1} isotherm_fit={this.state.isodata_1.isotherm_fit}  />
                         </div>
                     </Col>
                     <Col>
                         <div className="plotstyle">
-                            <PlotIsotherm adsbname={this.state.adsb2} />
+                            <PlotIsotherm_1 adsbname={this.state.adsb2} isotherm_fit={this.state.isodata_2.isotherm_fit}  />
                         </div>
                     </Col>
                 </Row>

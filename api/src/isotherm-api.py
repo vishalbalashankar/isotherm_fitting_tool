@@ -76,12 +76,12 @@ class EnterParameters(Resource):
         Ttot = 3
         zFit = np.empty(Ttot*len(xFit)); zFit.fill(1)
         flag = 0
-        for Temp in ['298.15', '308.15', '318.15']:
+        for Temp in ['283.15', '298.15', '313.15']:
             zFit[ flag*len(xFit): (flag+1)*len(xFit) ] = Temp
             flag+=1
         xFit = np.tile(xFit,Ttot)
         X = xFit, zFit
-        yFit = isotherm(X, float(args['qsat']), float(args['b0']), float(args['delu']))
+        yFit = isotherm(X, float(args['qsat']), float(args['b0']), 1000*float(args['delu']))
         df = pd.DataFrame()
         df['Pfit'] = xFit
         df['qfit'] = yFit
